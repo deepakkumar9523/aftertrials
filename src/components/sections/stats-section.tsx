@@ -44,9 +44,9 @@ const DotGridIcon = ({ className }: {className?: string}) => {
 };
 
 const stats = [
-  { value: "150M+", label: "Calls" },
-  { value: "1.5M+", label: "Assistants Launched" },
-  { value: "350K+", label: "Developers" },
+  { value: "50K+", label: "Healthcare Professionals" },
+  { value: "2M+", label: "Clinical Discussions" },
+  { value: "180+", label: "Countries" },
 ];
 
 const StatCard = ({ stat, index }: { stat: { value: string; label: string }; index: number }) => {

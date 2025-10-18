@@ -76,7 +76,7 @@ const HeroSection = () => {
             </div>
 
             <motion.h1 
-                className="font-display text-balance px-6 text-[48px] font-black leading-tight tracking-[-0.02em] text-white md:text-[72px] !whitespace-pre-line"
+                className="font-display text-balance px-6 text-[48px] font-black leading-tight tracking-[-0.02em] text-white md:text-[72px] !whitespace-pre-line text-center"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, ease: "easeOut" }}
@@ -92,9 +92,12 @@ const HeroSection = () => {
                         ease: "linear",
                     }}
                 >
-                    after Trials
+                    After Trials
                 </motion.span>
                 <br />
+                <span className="text-[32px] md:text-[48px] text-text-secondary">
+                    for healthcare professionals
+                </span>
             </motion.h1>
 
             <motion.div 
@@ -104,9 +107,7 @@ const HeroSection = () => {
                 transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
             >
                 <motion.a
-          href="https://dashboard.vapi.ai/"
-          target="_blank"
-          rel="noopener noreferrer"
+          href="#"
           className="group relative flex h-14 w-full flex-1 items-center justify-center gap-3 rounded-full bg-[#00E5A0] px-[32px] py-[12px] font-mono text-base font-medium uppercase tracking-wider text-black transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(0,229,160,0.5)] active:scale-95 !whitespace-pre-line overflow-hidden"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
@@ -122,21 +123,19 @@ const HeroSection = () => {
                             ease: "linear",
                         }}
                     />
-                    <span className="relative z-10">Jo</span>
+                    <span className="relative z-10">Join Now</span>
                     <span className="relative z-10 h-4 w-2 overflow-hidden">
                         <DotsIcon className="absolute inset-0 origin-center transition-transform duration-300 group-hover:translate-x-4" />
                         <DotsIcon className="absolute inset-0 -translate-x-4 origin-center transition-transform duration-300 group-hover:translate-x-0" />
                     </span>
                 </motion.a>
                 <motion.a
-          href="https://docs.vapi.ai"
-          target="_blank"
-          rel="noopener noreferrer"
+          href="#"
           className="group flex h-14 w-full flex-1 items-center justify-center gap-3 rounded-full border border-border bg-transparent px-[32px] py-[12px] font-mono text-base font-medium uppercase tracking-wider text-text-secondary transition-all duration-300 hover:scale-105 hover:border-text-primary hover:text-text-primary hover:shadow-[0_0_20px_rgba(255,255,255,0.2)] active:scale-95 !whitespace-pre-line"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-                    <span>invite</span>
+                    <span>Learn More</span>
                     <DotsCircleIcon className="origin-center transition-transform duration-300 group-hover:rotate-45" />
                 </motion.a>
             </motion.div>
@@ -173,7 +172,7 @@ const HeroSection = () => {
                     <div className="absolute inset-0 grid place-items-center">
                         <div className="flex flex-col items-center gap-4">
                             <motion.button
-                aria-label="Talk to Vapi"
+                aria-label="Connect with peers"
                 className="group relative mt-4 flex h-14 w-[13.5rem] cursor-pointer items-center justify-center gap-3 rounded-full border border-white/20 bg-black/30 font-mono text-sm font-medium uppercase tracking-wider text-white backdrop-blur-md transition-all duration-300 hover:scale-105 hover:border-white/40 hover:bg-black/40 hover:shadow-[0_0_40px_rgba(255,255,255,0.1)] active:scale-95 sm:h-[97px] sm:w-[373px] sm:gap-4 sm:text-xl"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ 
@@ -189,10 +188,10 @@ const HeroSection = () => {
             >
                                 <span className="relative grid text-nowrap">
                                     <span className="col-start-1 row-start-1 block transition-opacity duration-250 group-hover:opacity-0">
-                                        TALK TO VAPI
+                                        CONNECT NOW
                                     </span>
                                     <span className="col-start-1 row-start-1 opacity-0 transition-opacity duration-250 group-hover:opacity-100">
-                                        GIVE IT A TRY
+                                        START NETWORKING
                                     </span>
                                 </span>
                                 <motion.div

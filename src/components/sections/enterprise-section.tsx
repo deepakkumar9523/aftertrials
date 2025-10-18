@@ -5,46 +5,46 @@ const enterpriseFeatures = [
   {
     iconUrl: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/7efce45a-ee96-4f84-b716-068ff7ccd449-vapi-ai/assets/svgs/image-1.svg?",
     bgColor: "bg-[#E5D5FA]",
-    title: "99.99% uptime",
-    description: "Our custom real-time audio infrastructure operates with enterprise-grade reliability.",
-    alt: "uptime icon"
+    title: "HIPAA Compliant",
+    description: "End-to-end encryption ensures all patient discussions remain completely confidential.",
+    alt: "shield icon"
   },
   {
     iconUrl: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/7efce45a-ee96-4f84-b716-068ff7ccd449-vapi-ai/assets/svgs/image-2.svg?",
     bgColor: "bg-[#FAD9D3]",
-    title: "Forward-deployed team",
-    description: "Get deployment assistance and a dedicated forward-deployed engineer to go live in a week.",
-    alt: "rocket icon"
+    title: "Global Network",
+    description: "Connect with verified doctors from 180+ countries across all medical specialties.",
+    alt: "globe icon"
   },
   {
     iconUrl: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/7efce45a-ee96-4f84-b716-068ff7ccd449-vapi-ai/assets/svgs/image-5.svg?",
     bgColor: "bg-[#D3F3F5]",
-    title: "Sub-500ms latency",
-    description: "Scale up and down to millions of calls in minutes with ultra-low latency interactions.",
-    alt: "phone icon"
+    title: "24/7 Access",
+    description: "Platform available around the clock for consultations and peer discussions anytime.",
+    alt: "clock icon"
   },
   {
     iconUrl: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/7efce45a-ee96-4f84-b716-068ff7ccd449-vapi-ai/assets/svgs/image-6.svg?",
     bgColor: "bg-[#D7F3E2]",
-    title: "AI guardrails",
-    description: "Built-in conversation guardrails prevent model hallucinations and ensure data integrity.",
-    alt: "shield icon for guardrails"
+    title: "Verified Professionals",
+    description: "Every member verified through medical licensing databases and credentials check.",
+    alt: "verified icon"
   },
   {
     iconUrl: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/7efce45a-ee96-4f84-b716-068ff7ccd449-vapi-ai/assets/svgs/image-7.svg?",
     bgColor: "bg-[#FCF4CD]",
-    title: "SOC2, HIPAA, PCI compliant",
-    description: "Enterprise-level security for even the most regulated healthcare and financial services.",
-    alt: "document icon for compliance"
+    title: "Enterprise Security",
+    description: "Bank-level security protocols protect all medical discussions and shared content.",
+    alt: "lock icon"
   }
 ];
 
-const enterpriseLogos = [
-  "GoHealth", 
-  "MindTickle", 
-  "PolicyBind", 
-  "Hotel Planner", 
-  "Housecall Pro"
+const hospitalLogos = [
+  "Mayo Clinic", 
+  "Cleveland Clinic", 
+  "Johns Hopkins", 
+  "Mass General", 
+  "Stanford Health"
 ];
 
 const FeatureCard = ({ iconUrl, bgColor, title, description, alt }: typeof enterpriseFeatures[0]) => (
@@ -64,7 +64,7 @@ const FeatureCard = ({ iconUrl, bgColor, title, description, alt }: typeof enter
 );
 
 const LogoScroller = () => {
-  const duplicatedLogos = [...enterpriseLogos, ...enterpriseLogos, ...enterpriseLogos, ...enterpriseLogos];
+  const duplicatedLogos = [...hospitalLogos, ...hospitalLogos, ...hospitalLogos, ...hospitalLogos];
 
   return (
     <div className="relative mt-16 w-full max-w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
@@ -93,10 +93,10 @@ export default function EnterpriseSection() {
       <div className="absolute inset-0 z-0 bg-[radial-gradient(rgba(0,0,0,0.07)_1px,transparent_1px)] [background-size:8px_8px]"></div>
       <div className="container relative z-10 mx-auto w-full px-6 pt-20 pb-[5.5rem] md:px-10 lg:px-20 lg:pt-32">
         <p className="text-center text-[0.75rem] font-medium uppercase tracking-[0.07rem] text-black/50">
-          ENTERPRISE
+          FOR INSTITUTIONS
         </p>
         <h2 className="mt-4 balance-text text-center text-[2.75rem] leading-[3.5rem] tracking-[-0.03rem]">
-          Reliable.
+          Secure.
           <Image
             src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/7efce45a-ee96-4f84-b716-068ff7ccd449-vapi-ai/assets/svgs/image-3.svg?"
             alt="Shield Icon"
@@ -104,7 +104,7 @@ export default function EnterpriseSection() {
             height={40}
             className="mx-4 inline-block h-10 w-10"
           />
-          Scalable.
+          Compliant.
           <Image
             src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/7efce45a-ee96-4f84-b716-068ff7ccd449-vapi-ai/assets/svgs/image-4.svg?"
             alt="Sparkle Icon"
@@ -112,7 +112,7 @@ export default function EnterpriseSection() {
             height={40}
             className="mx-4 inline-block h-10 w-10"
           />
-          Secure.
+          Trusted.
         </h2>
         
         <div className="mt-20 flex flex-col items-center">

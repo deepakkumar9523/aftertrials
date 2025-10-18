@@ -16,18 +16,16 @@ const CareersSection = () => {
       <div className="relative z-10 mx-auto max-w-7xl px-6 text-center md:px-10 lg:px-20">
         <div className="mx-auto flex max-w-4xl flex-col items-center gap-6">
           <p className="font-mono text-xs font-medium uppercase tracking-[0.05em] text-[#FF6B35]">
-            CAREERS AT VAPI
+            CAREERS AT AFTER TRIALS
           </p>
           <h2 className="font-display text-[clamp(3.5rem,5vw,4rem)] font-bold leading-tight tracking-tighter text-[#0A0A0B]">
-            Brilliant minds. Bleeding-edge tech. Relentless drive.
+            Innovate healthcare. Build community. Make impact.
           </h2>
           <p className="max-w-2xl text-lg text-neutral-600">
-            Join a team of the most cracked people to do rewarding work in an intensely ambitious environment.
+            Join our mission to connect healthcare professionals worldwide and transform how doctors collaborate and share knowledge.
           </p>
           <a
-            href="https://jobs.ashbyhq.com/vapi"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#"
             className="mt-2 inline-flex items-center justify-center rounded-full border border-neutral-900/20 bg-white px-8 py-3 text-sm font-medium text-black transition-colors hover:bg-neutral-100"
           >
             See open roles

@@ -3,27 +3,27 @@ import Image from "next/image";
 const logos = [
   {
     src: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/7efce45a-ee96-4f84-b716-068ff7ccd449-vapi-ai/assets/images/next-805230-image.png?",
-    alt: "Unity AI",
+    alt: "Mayo Clinic",
   },
   {
     src: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/7efce45a-ee96-4f84-b716-068ff7ccd449-vapi-ai/assets/images/next-808407-image.png?",
-    alt: "NY Life",
+    alt: "Cleveland Clinic",
   },
   {
     src: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/7efce45a-ee96-4f84-b716-068ff7ccd449-vapi-ai/assets/images/next-110306-image.png?",
-    alt: "Intuit",
+    alt: "Johns Hopkins",
   },
   {
     src: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/7efce45a-ee96-4f84-b716-068ff7ccd449-vapi-ai/assets/images/next-215823-image.png?",
-    alt: "Instawork",
+    alt: "Mass General",
   },
   {
     src: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/7efce45a-ee96-4f84-b716-068ff7ccd449-vapi-ai/assets/images/next-223393-image.png?",
-    alt: "Housecall Pro",
+    alt: "Stanford Health",
   },
   {
     src: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/7efce45a-ee96-4f84-b716-068ff7ccd449-vapi-ai/assets/images/next-119740-image.png?",
-    alt: "Cherry",
+    alt: "Kaiser Permanente",
   },
 ];
 

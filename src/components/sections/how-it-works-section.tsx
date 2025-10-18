@@ -4,24 +4,23 @@ const cardData = [
   {
     number: "001",
     imageSrc: "https://vapi.ai/how-it-works/steps/0/image.png",
-    imageAlt: "Choose your workflow.",
-    title: "Choose your workflow.",
-    description: "Pick from 1000s of pre-made templates, or build one yourself.",
+    imageAlt: "Create your profile",
+    title: "Create your profile",
+    description: "Verify your medical credentials and join a trusted network of healthcare professionals.",
   },
   {
     number: "002",
     imageSrc: "https://vapi.ai/how-it-works/steps/1/image.png",
-    imageAlt: "Plug it in.",
-    title: "Plug it in.",
-    description:
-      "Whether it's in your telephony, website, or in your app, we have it covered.",
+    imageAlt: "Connect & Share",
+    title: "Connect & Share",
+    description: "Join specialty groups, share insights, and collaborate on complex cases with peers worldwide.",
   },
   {
     number: "003",
     imageSrc: "https://vapi.ai/how-it-works/steps/2/image.png",
-    imageAlt: "Done.",
-    title: "Done.",
-    description: "Handle millions of calls and watch how they perform.",
+    imageAlt: "Advance Care",
+    title: "Advance Care",
+    description: "Access latest research, attend webinars, and bring cutting-edge knowledge to your practice.",
   },
 ];
 
@@ -34,9 +33,9 @@ const HowItWorksSection = () => {
             How It Works
           </p>
           <h2 className="mt-4 text-4xl leading-[1.1] tracking-[-0.01em] text-text-primary sm:text-5xl">
-            Try in minutes.
+            Join in minutes.
             <br />
-            Deploy in days.
+            Connect instantly.
           </h2>
         </div>
         <div className="mt-20 grid grid-cols-1 gap-6 md:grid-cols-3">

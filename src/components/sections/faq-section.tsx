@@ -11,28 +11,28 @@ import {
 const faqData = [
   {
     value: "item-1",
-    question: "What is Vapi?",
-    answer: "Vapi is a comprehensive platform for developers to build, test, and deploy advanced voice AI agents. It provides a robust API, SDKs, and a suite of tools to create human-like conversational experiences that can be integrated into any application or workflow.",
+    question: "What is After Trials?",
+    answer: "After Trials is a secure social media platform exclusively for verified healthcare professionals. It enables doctors to connect globally, share clinical insights, discuss complex cases, and access the latest medical research—all within a HIPAA-compliant environment.",
   },
   {
     value: "item-2",
-    question: "How is this more cost-effective for my organisation?",
-    answer: "By leveraging Vapi, organizations can automate a significant portion of their voice-based interactions, reducing the need for large call center staff. Our optimized infrastructure and pay-as-you-go pricing model ensure you only pay for what you use, leading to substantial cost savings compared to traditional solutions or building from scratch.",
+    question: "How do you verify medical credentials?",
+    answer: "We verify every member through multiple medical licensing databases and credential checks. Physicians must provide their medical license number, NPI, and institutional affiliation. Our verification team confirms credentials before granting platform access.",
   },
   {
     value: "item-3",
-    question: "What is the difference from other AI voice competitors?",
-    answer: "Vapi distinguishes itself with its developer-first approach, offering unparalleled flexibility and customization. Unlike black-box solutions, we provide deep control over every component, from transcription and LLMs to voice synthesis. Our platform is designed for rapid iteration, robust testing, and seamless scalability.",
+    question: "Is patient information protected?",
+    answer: "Absolutely. After Trials is fully HIPAA compliant with end-to-end encryption. All case discussions must use de-identified information. Our platform is designed with healthcare privacy regulations at its core, ensuring patient confidentiality is never compromised.",
   },
   {
     value: "item-4",
-    question: "I need holistic customization, what types of support does your platform offer?",
-    answer: "Our platform is built for holistic customization. You can bring your own models (BYOM), use custom tools via API calls, define complex conversational flows, and fine-tune every aspect of the agent's behavior and voice. For enterprise clients, we offer dedicated support and forward-deployed engineers to assist with bespoke integrations.",
+    question: "Can I earn CME credits on the platform?",
+    answer: "Yes! After Trials offers accredited continuing medical education through webinars, expert-led discussions, and interactive learning modules. Track your CME credits directly within your profile and receive certificates for completed activities.",
   },
   {
     value: "item-5",
-    question: "Is it difficult to set up?",
-    answer: "Not at all. You can get started in minutes. Our comprehensive documentation, pre-made templates, and intuitive SDKs for popular languages like TypeScript and Python make the initial setup straightforward. A basic voice agent can be up and running with just a few lines of code.",
+    question: "How much does it cost to join?",
+    answer: "After Trials offers a free tier for individual physicians with access to core networking features. Premium memberships unlock advanced features like unlimited case consultations, exclusive research access, and priority support. Institutional plans are available for hospitals and medical groups.",
   },
 ];
 

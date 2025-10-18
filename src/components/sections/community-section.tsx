@@ -95,24 +95,24 @@ const profilePattern = [
 
 const communityData = [
   {
-    label: "CONFIGURATION POINTS",
-    value: "4.2K+",
-    platform: "Docs",
-    href: "https://docs.vapi.ai/welcome",
+    label: "ACTIVE PHYSICIANS",
+    value: "50K+",
+    platform: "Members",
+    href: "#",
     icon: docsPattern,
   },
   {
-    label: "SUPPORT TOPICS",
-    value: "13K+",
+    label: "CLINICAL DISCUSSIONS",
+    value: "2M+",
     platform: "Community",
-    href: "https://vapi.ai/community",
+    href: "#",
     icon: communityPattern,
   },
   {
-    label: "FOLLOWERS",
-    value: "9.6K+",
-    platform: "LinkedIn",
-    href: "https://www.linkedin.com/company/vapi-ai",
+    label: "MEDICAL SPECIALTIES",
+    value: "100+",
+    platform: "Specialties",
+    href: "#",
     icon: profilePattern,
   },
 ];
@@ -126,7 +126,7 @@ const CommunitySection = () => {
             Community
           </p>
           <h2 className="mt-4 font-display text-[56px] font-bold leading-[1.1] tracking-tight text-white sm:text-[64px]">
-            250,000+ devs are already <br className="hidden sm:inline" />here. Join the movement.
+            50,000+ doctors are already <br className="hidden sm:inline" />here. Join the community.
           </h2>
         </div>
 
@@ -135,8 +135,6 @@ const CommunitySection = () => {
             <Link
               key={item.platform}
               href={item.href}
-              target="_blank"
-              rel="noopener noreferrer"
               className="group relative flex h-[380px] cursor-pointer flex-col justify-between overflow-hidden rounded-2xl border bg-[#1A1A1A] p-10 border-[#2A2A2A] transition-all duration-300 ease-in-out hover:scale-[1.02] hover:border-zinc-700 hover:shadow-[0_8px_32px_rgba(0,0,0,0.4)]"
             >
               <div className="flex items-center justify-between font-mono text-xs font-medium uppercase tracking-[0.05em] text-text-tertiary">

@@ -28,7 +28,7 @@ const TaglineSection = () => {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          Teams at{' '}
+          From{' '}
           <motion.span 
             className="bg-gradient-to-r from-[var(--accent-cyan)] via-[var(--accent-blue)] to-[var(--accent-cyan)] bg-clip-text text-transparent bg-[length:200%_100%]"
             animate={{
@@ -40,9 +40,9 @@ const TaglineSection = () => {
               ease: "linear",
             }}
           >
-            trail-blazing
+            resident physicians
           </motion.span>{' '}
-          startups to{' '}
+          to{' '}
           <motion.span 
             className="text-[var(--accent-green)]"
             animate={{
@@ -58,9 +58,9 @@ const TaglineSection = () => {
               ease: "easeInOut",
             }}
           >
-            Fortune 500
-          </motion.span>{' '}
-          companies deploy voice agents on the{' '}
+            leading specialists
+          </motion.span>,{' '}
+          doctors connect and share insights on the{' '}
           <motion.span 
             className="text-[var(--accent-green)]"
             animate={{
@@ -77,7 +77,7 @@ const TaglineSection = () => {
               delay: 0.5,
             }}
           >
-            Vapi platform
+            After Trials platform
           </motion.span>.
         </motion.h2>
       </div>
