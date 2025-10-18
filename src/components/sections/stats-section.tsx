@@ -1,7 +1,7 @@
 "use client";
 
-import { useRef, useState, useEffect } from "react";
-import { cn } from "@/lib/utils";
+import React from "react";
+import { motion, useInView } from "framer-motion";
 
 const QuoteIcon = ({ className }: { className?: string }) => (
   <svg
@@ -10,7 +10,7 @@ const QuoteIcon = ({ className }: { className?: string }) => (
     viewBox="0 0 107 86"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
-    className={cn("pointer-events-none", className)}
+    className={className}
     aria-hidden="true"
   >
     <path d="M43 1V43C43 65.0914 24.0914 85 0 85" stroke="currentColor" strokeWidth="2" />
@@ -21,14 +21,13 @@ const QuoteIcon = ({ className }: { className?: string }) => (
 const WaveIcon = ({ className }: { className?: string }) => {
     const bars = [20, 35, 28, 45, 30, 50, 40, 32, 25];
     return (
-        <svg width="76" height="50" viewBox="0 0 76 50" fill="none" xmlns="http://www.w3.org/2000/svg" className={cn("pointer-events-none", className)} aria-hidden="true">
+        <svg width="76" height="50" viewBox="0 0 76 50" fill="none" xmlns="http://www.w3.org/2000/svg" className={className} aria-hidden="true">
             {bars.map((height, i) => (
                 <rect key={i} x={i * 8} y={50-height} width="4" height={height} rx="2" fill="currentColor" />
             ))}
         </svg>
     )
 };
-
 
 const DotGridIcon = ({ className }: {className?: string}) => {
     const dots = Array.from({ length: 121 }).map((_, i) => {
@@ -37,7 +36,7 @@ const DotGridIcon = ({ className }: {className?: string}) => {
         return <circle key={i} cx={col * 10 + 5} cy={row * 10 + 5} r="1" fill="currentColor" />
     });
     return (
-        <svg width="110" height="110" viewBox="0 0 110 110" fill="none" xmlns="http://www.w3.org/2000/svg" className={cn("pointer-events-none select-none", className)} aria-hidden="true">
+        <svg width="110" height="110" viewBox="0 0 110 110" fill="none" xmlns="http://www.w3.org/2000/svg" className={className} aria-hidden="true">
             <rect width="110" height="110" fill="transparent" />
             {dots}
         </svg>
@@ -45,93 +44,117 @@ const DotGridIcon = ({ className }: {className?: string}) => {
 };
 
 const stats = [
-  {
-    label: "Calls",
-    value: "150M+",
-  },
-  {
-    label: "Assistants Launched",
-    value: "1.5M+",
-  },
-  {
-    label: "Developers",
-    value: "350K+",
-  },
+  { value: "150M+", label: "Calls" },
+  { value: "1.5M+", label: "Assistants Launched" },
+  { value: "350K+", label: "Developers" },
 ];
 
-const StatCard = ({ stat, index, isVisible }: { stat: typeof stats[0], index: number, isVisible: boolean }) => (
-    <div
-        className={cn(
-            "group relative mx-auto flex max-w-sm flex-col gap-y-2 text-center transition-all duration-700 ease-out lg:py-8",
-            "transform-gpu",
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-        )}
-        style={{ transitionDelay: `${index * 100}ms` }}
+const StatCard = ({ stat, index }: { stat: { value: string; label: string }; index: number }) => {
+  const ref = React.useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
+  return (
+    <motion.dl
+      ref={ref}
+      className="group relative flex flex-col items-center text-center"
+      initial={{ opacity: 0, y: 50 }}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+      transition={{
+        duration: 0.8,
+        delay: index * 0.2,
+        ease: "easeOut",
+      }}
     >
-        {/* Decorative elements */}
-        {index === 0 && (
-            <>
-                <WaveIcon className="absolute -left-12 sm:-left-20 top-1/2 -translate-y-1/2 text-white/5" />
-                <DotGridIcon className="absolute -right-2 sm:-right-8 top-1/2 -translate-y-1/2 text-white/5 opacity-75" />
-            </>
-        )}
-        {index === 1 && (
-            <>
-                <QuoteIcon className="absolute -left-8 sm:-left-16 top-1/2 -translate-y-1/2 scale-75 text-white/5" />
-                <DotGridIcon className="absolute -right-10 sm:-right-20 top-1/2 -translate-y-1/2 text-white/5" />
-            </>
-        )}
-        {index === 2 && (
-            <>
-                <WaveIcon className="absolute -left-12 sm:-left-20 top-1/2 -translate-y-1/2 text-white/5 transform scale-x-[-1]" />
-                <QuoteIcon className="absolute -right-8 sm:-right-16 top-1/2 -translate-y-1/2 scale-75 text-white/5" />
-            </>
-        )}
+      {/* Quote decoration */}
+      {index === 0 && (
+        <motion.div
+          animate={{
+            rotate: [0, 5, -5, 0],
+            scale: [1, 1.1, 1],
+          }}
+          transition={{
+            duration: 6,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        >
+          <QuoteIcon className="absolute -left-8 -top-8 h-12 w-12 text-accent-cyan/20 md:-left-12 md:-top-12 md:h-16 md:w-16" />
+        </motion.div>
+      )}
 
-        <dt className="font-mono text-xs uppercase tracking-[0.2em] text-white/60">
-            {stat.label}
-        </dt>
-        <dd className="order-first font-display text-[min(20vw,8rem)] font-medium leading-none tracking-tight text-white lg:text-[8.75rem]">
-            {stat.value}
-        </dd>
+      <dt className="font-mono text-xs uppercase tracking-[0.2em] text-white/60">
+        {stat.label}
+      </dt>
+      <dd className="order-first font-display text-[min(20vw,8rem)] font-medium leading-none tracking-tight text-white lg:text-[8.75rem]">
+        <motion.span
+          className="inline-block bg-gradient-to-r from-white via-accent-green to-white bg-clip-text text-transparent bg-[length:200%_100%]"
+          animate={{
+            backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
+          }}
+          transition={{
+            duration: 5,
+            repeat: Infinity,
+            ease: "linear",
+            delay: index * 0.5,
+          }}
+        >
+          {stat.value}
+        </motion.span>
+      </dd>
 
-        <div className="absolute inset-[-50%] -z-10 rounded-full bg-accent-purple/5 opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-20" />
-    </div>
-)
+      <motion.div 
+        className="absolute inset-[-50%] -z-10 rounded-full bg-accent-purple/5 opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-20"
+        whileHover={{
+          scale: 1.2,
+          opacity: 0.3,
+        }}
+        transition={{
+          duration: 0.5,
+        }}
+      />
+    </motion.dl>
+  );
+};
 
-export default function StatsSection() {
-    const sectionRef = useRef<HTMLDivElement>(null);
-    const [isVisible, setIsVisible] = useState(false);
+const StatsSection = () => {
+  return (
+    <section className="relative w-full overflow-hidden bg-background-primary py-16 md:py-24 lg:py-32">
+      {/* Animated background elements */}
+      <motion.div 
+        className="absolute left-[10%] top-[20%] h-64 w-64 rounded-full bg-accent-purple/5 blur-3xl"
+        animate={{
+          scale: [1, 1.2, 1],
+          opacity: [0.3, 0.5, 0.3],
+        }}
+        transition={{
+          duration: 8,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      />
+      <motion.div 
+        className="absolute right-[15%] bottom-[20%] h-80 w-80 rounded-full bg-accent-cyan/5 blur-3xl"
+        animate={{
+          scale: [1.2, 1, 1.2],
+          opacity: [0.3, 0.5, 0.3],
+        }}
+        transition={{
+          duration: 10,
+          repeat: Infinity,
+          ease: "easeInOut",
+          delay: 2,
+        }}
+      />
 
-    useEffect(() => {
-        const observer = new IntersectionObserver(([entry]) => {
-            if (entry.isIntersecting) {
-                setIsVisible(true);
-                observer.disconnect();
-            }
-        }, { threshold: 0.2, rootMargin: "0px 0px -100px 0px" });
+      <div className="container mx-auto px-6">
+        <div className="grid gap-12 md:grid-cols-3 md:gap-8 lg:gap-16">
+          {stats.map((stat, index) => (
+            <StatCard key={stat.label} stat={stat} index={index} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
 
-        const currentRef = sectionRef.current;
-        if (currentRef) {
-            observer.observe(currentRef);
-        }
-
-        return () => {
-            if (currentRef) {
-                observer.unobserve(currentRef);
-            }
-        };
-    }, []);
-
-    return (
-        <section ref={sectionRef} className="relative bg-background-primary py-24 sm:py-32 overflow-x-clip">
-            <div className="container mx-auto px-6 lg:px-8">
-                <dl className="grid grid-cols-1 gap-y-12 lg:grid-cols-3 lg:gap-y-0 lg:gap-x-8">
-                    {stats.map((stat, index) => (
-                        <StatCard key={stat.label} stat={stat} index={index} isVisible={isVisible} />
-                    ))}
-                </dl>
-            </div>
-        </section>
-    );    
-}
+export default StatsSection;

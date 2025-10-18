@@ -1,85 +1,85 @@
-import React from 'react';
+"use client";
 
-const TaglineText = () => (
-  <h2 className="font-display text-4xl md:text-[56px] lg:text-[64px] font-semibold leading-tight tracking-[-0.01em] text-white/90 [text-shadow:0_0_15px_rgba(255,255,255,0.1)]">
-    Teams at{' '}
-    <span className="bg-gradient-to-r from-[var(--accent-cyan)] to-[var(--accent-blue)] bg-clip-text text-transparent">
-      trail-blazing
-    </span>{' '}
-    startups to <span className="text-[var(--accent-green)]">Fortune 500</span> companies deploy voice
-    agents on the <span className="text-[var(--accent-green)]">Vapi platform</span>.
-  </h2>
-);
-
-/**
- * NOTE: This component uses a custom 'marquee' animation.
- * Please ensure the following is added to your `tailwind.config.js` file for the animation to work:
- *
- * module.exports = {
- *   theme: {
- *     extend: {
- *       animation: {
- *         marquee: 'marquee 45s linear infinite',
- *       },
- *       keyframes: {
- *         marquee: {
- *           '0%': { transform: 'translateX(0%)' },
- *           '100%': { transform: 'translateX(-100%)' },
- *         },
- *       },
- *     },
- *   },
- *   plugins: [],
- * }
- * 
- * ---
- * An alternative setup for seamless looping:
- * `to: { transform: 'translateX(-50%)' }` if the content is duplicated exactly once.
- * The current implementation duplicates the content within a single animated element,
- * so the translateX value depends on how the content is laid out.
- * A simpler implementation is used here:
- *
- * <div className="flex animate-marquee">
- *   <div className="min-w-full flex-shrink-0">
- *     <TaglineText />
- *   </div>
- *   <div className="min-w-full flex-shrink-0">
- *     <TaglineText />
- *   </div>
- * </div>
- *
- * To make this work with `translateX(-100%)`, we might need to adjust the structure.
- * Let's assume the keyframes are set from `0%` to `-100%` on a container with two full-width children.
- * This is a common pattern.
- */
+import React from "react";
+import { motion } from "framer-motion";
 
 const TaglineSection = () => {
-    const TaglineContent = () => (
-        <div className="mx-4 flex-shrink-0">
-          <TaglineText />
-        </div>
-      );
-
   return (
-    <section className="bg-background-primary py-20 md:py-28 overflow-hidden">
-      <div className="text-center mb-12">
-        <span className="font-body text-xs font-medium text-text-tertiary uppercase tracking-[0.05em]">
-          API
-        </span>
-      </div>
-      <div
-        className="relative"
-        style={{
-          maskImage: 'linear-gradient(to right, transparent, black 20%, black 80%, transparent)',
-          WebkitMaskImage: 'linear-gradient(to right, transparent, black 20%, black 80%, transparent)',
+    <section className="relative w-full overflow-hidden bg-background-primary py-16 md:py-20">
+      {/* Animated background */}
+      <motion.div 
+        className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(74,222,128,0.05),transparent_70%)]"
+        animate={{
+          scale: [1, 1.3, 1],
+          opacity: [0.5, 0.8, 0.5],
         }}
-      >
-        <div className="flex animate-[marquee_45s_linear_infinite] whitespace-nowrap">
-            <TaglineContent />
-            <TaglineContent />
-            <TaglineContent />
-            <TaglineContent />
-        </div>
+        transition={{
+          duration: 10,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      />
+
+      <div className="container mx-auto px-6 text-center">
+        <motion.h2 
+          className="font-display text-4xl md:text-[56px] lg:text-[64px] font-semibold leading-tight tracking-[-0.01em] text-white/90 [text-shadow:0_0_15px_rgba(255,255,255,0.1)]"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
+          Teams at{' '}
+          <motion.span 
+            className="bg-gradient-to-r from-[var(--accent-cyan)] via-[var(--accent-blue)] to-[var(--accent-cyan)] bg-clip-text text-transparent bg-[length:200%_100%]"
+            animate={{
+              backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
+            }}
+            transition={{
+              duration: 4,
+              repeat: Infinity,
+              ease: "linear",
+            }}
+          >
+            trail-blazing
+          </motion.span>{' '}
+          startups to{' '}
+          <motion.span 
+            className="text-[var(--accent-green)]"
+            animate={{
+              textShadow: [
+                "0 0 10px rgba(74,222,128,0.3)",
+                "0 0 20px rgba(74,222,128,0.6)",
+                "0 0 10px rgba(74,222,128,0.3)",
+              ],
+            }}
+            transition={{
+              duration: 3,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          >
+            Fortune 500
+          </motion.span>{' '}
+          companies deploy voice agents on the{' '}
+          <motion.span 
+            className="text-[var(--accent-green)]"
+            animate={{
+              textShadow: [
+                "0 0 10px rgba(74,222,128,0.3)",
+                "0 0 20px rgba(74,222,128,0.6)",
+                "0 0 10px rgba(74,222,128,0.3)",
+              ],
+            }}
+            transition={{
+              duration: 3,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 0.5,
+            }}
+          >
+            Vapi platform
+          </motion.span>.
+        </motion.h2>
       </div>
     </section>
   );
