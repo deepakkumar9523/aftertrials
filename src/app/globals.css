@@ -1,0 +1,296 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Monument+Grotesk:wght@400;500&display=swap');
+
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  /* Shadcn/UI colors - adapted for dark theme */
+  --color-background: #0A0A0B;
+  --color-foreground: #FFFFFF;
+
+  --color-card: #111113;
+  --color-card-foreground: #FFFFFF;
+
+  --color-popover: #111113;
+  --color-popover-foreground: #FFFFFF;
+
+  --color-primary: #4ADE80; /* Accent Green */
+  --color-primary-foreground: #0A0A0B;
+
+  --color-secondary: #1F1F23; /* Border Subtle */
+  --color-secondary-foreground: #FFFFFF;
+
+  --color-muted: #666666; /* Text Tertiary */
+  --color-muted-foreground: #A0A0A0; /* Text Secondary */
+
+  --color-accent: #1F1F23; /* Border Subtle */
+  --color-accent-foreground: #FFFFFF;
+
+  --color-destructive: #EF4444; /* Example red, not explicitly in design system but good to have */
+  --color-destructive-foreground: #FFFFFF;
+
+  --color-border: #1F1F23; /* Border Subtle */
+  --color-input: #111113; /* Background Secondary */
+  --color-ring: #4ADE80; /* Accent Green */
+
+  /* Chart colors - using design system accents */
+  --color-chart-1: #4ADE80; /* Accent Green */
+  --color-chart-2: #22D3EE; /* Accent Cyan */
+  --color-chart-3: #A855F7; /* Accent Purple */
+  --color-chart-4: #FDE047; /* Accent Yellow */
+  --color-chart-5: #FB923C; /* Accent Orange */
+
+  /* Custom colors from design system */
+  --color-background-primary: #0A0A0B;
+  --color-background-secondary: #111113;
+  --color-background-tertiary: #F5F3ED; /* Cream/beige for enterprise section */
+
+  --color-text-primary: #FFFFFF;
+  --color-text-secondary: #A0A0A0;
+  --color-text-tertiary: #666666;
+
+  --color-accent-green: #4ADE80;
+  --color-accent-cyan: #22D3EE;
+  --color-accent-blue: #3B82F6;
+  --color-accent-purple: #A855F7;
+  --color-accent-yellow: #FDE047;
+  --color-accent-orange: #FB923C;
+
+  --color-code-background: #0D1117;
+  --color-code-syntax-cyan: #00D4FF;
+  --color-code-syntax-green: #4ADE80;
+
+  --color-border-subtle: #1F1F23;
+
+  /* Shadcn/UI radius */
+  --radius-lg: 1rem; /* Cards */
+  --radius-md: 0.5rem; /* Buttons, inputs */
+  --radius-sm: 0.25rem; /* Smaller elements */
+  --radius-full: 9999px; /* Pills */
+
+  /* Shadcn/UI animations */
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+    to {
+      height: 0;
+    }
+  }
+
+  /* Custom font families */
+  --font-display: "Monument Grotesk", sans-serif;
+  --font-body: "Monument Grotesk", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  /* Custom font weights */
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+}
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-border);
+  }
+}
+
+@layer base {
+  :root {
+    /* Shadcn/UI variables */
+    --background: var(--color-background);
+    --foreground: var(--color-foreground);
+    --card: var(--color-card);
+    --card-foreground: var(--color-card-foreground);
+    --popover: var(--color-popover);
+    --popover-foreground: var(--color-popover-foreground);
+    --primary: var(--color-primary);
+    --primary-foreground: var(--color-primary-foreground);
+    --secondary: var(--color-secondary);
+    --secondary-foreground: var(--color-secondary-foreground);
+    --muted: var(--color-muted);
+    --muted-foreground: var(--color-muted-foreground);
+    --accent: var(--color-accent);
+    --accent-foreground: var(--color-accent-foreground);
+    --destructive: var(--color-destructive);
+    --destructive-foreground: var(--color-destructive-foreground);
+    --border: var(--color-border);
+    --input: var(--color-input);
+    --ring: var(--color-ring);
+    --chart-1: var(--color-chart-1);
+    --chart-2: var(--color-chart-2);
+    --chart-3: var(--color-chart-3);
+    --chart-4: var(--color-chart-4);
+    --chart-5: var(--color-chart-5);
+    --radius: var(--radius-md); /* Default radius for shadcn components */
+
+    /* Custom variables from design system */
+    --background-primary: var(--color-background-primary);
+    --background-secondary: var(--color-background-secondary);
+    --background-tertiary: var(--color-background-tertiary);
+
+    --text-primary: var(--color-text-primary);
+    --text-secondary: var(--color-text-secondary);
+    --text-tertiary: var(--color-text-tertiary);
+
+    --accent-green: var(--color-accent-green);
+    --accent-cyan: var(--color-accent-cyan);
+    --accent-blue: var(--color-accent-blue);
+    --accent-purple: var(--color-accent-purple);
+    --accent-yellow: var(--color-accent-yellow);
+    --accent-orange: var(--color-accent-orange);
+
+    --code-background: var(--color-code-background);
+    --code-syntax-cyan: var(--color-code-syntax-cyan);
+    --code-syntax-green: var(--color-code-syntax-green);
+
+    --border-subtle: var(--color-border-subtle);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-body);
+    background-color: var(--background);
+    color: var(--foreground);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    color: var(--text-primary);
+    font-weight: var(--font-weight-regular);
+    letter-spacing: -0.02em;
+  }
+
+  h1 {
+    font-size: 4.5rem; /* 72px */
+    line-height: 1.05; /* 76px */
+  }
+
+  .hero-h1 {
+    font-size: 6rem; /* 96px */
+    line-height: 1; /* 96px */
+  }
+
+  h2 {
+    font-size: 3rem; /* 48px */
+    line-height: 1.1; /* 52px */
+    letter-spacing: -0.01em;
+  }
+
+  h3 {
+    font-size: 2.25rem; /* 36px */
+    line-height: 1.15; /* 42px */
+    letter-spacing: -0.01em;
+  }
+
+  h4 {
+    font-size: 1.5rem; /* 24px */
+    line-height: 1.2; /* 29px */
+    font-weight: var(--font-weight-medium);
+    letter-spacing: 0;
+  }
+
+  p {
+    font-size: 1rem; /* 16px */
+    line-height: 1.6; /* 26px */
+    color: var(--text-secondary);
+  }
+
+  .text-lg {
+    font-size: 1.25rem; /* 20px */
+    line-height: 1.5; /* 30px */
+  }
+
+  .text-sm {
+    font-size: 0.875rem; /* 14px */
+    line-height: 1.5; /* 21px */
+    color: var(--text-secondary);
+  }
+
+  .text-xs {
+    font-size: 0.75rem; /* 12px */
+    line-height: 1.4; /* 17px */
+    font-weight: var(--font-weight-medium);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--text-tertiary);
+  }
+
+  .font-mono {
+    font-family: var(--font-mono);
+  }
+
+  .container {
+    max-width: 1440px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 80px;
+    padding-right: 80px;
+  }
+
+  @media (max-width: 1024px) { /* Tablet */
+    .container {
+      padding-left: 40px;
+      padding-right: 40px;
+    }
+  }
+
+  @media (max-width: 768px) { /* Mobile */
+    .container {
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+    h1 {
+      font-size: 3rem; /* Adjust for mobile */
+      line-height: 1.1;
+    }
+    .hero-h1 {
+      font-size: 4rem; /* Adjust for mobile */
+      line-height: 1.1;
+    }
+    h2 {
+      font-size: 2.25rem;
+      line-height: 1.2;
+    }
+    h3 {
+      font-size: 1.75rem;
+      line-height: 1.2;
+    }
+  }
+}
+
+/* Hide Next.js error overlay portal */
+nextjs-portal {
+  display: none !important;
+}
