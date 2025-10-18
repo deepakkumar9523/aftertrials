@@ -25,7 +25,7 @@ export default function TaglineSection() {
       animationFrameId = requestAnimationFrame(animate);
     };
 
-    animationFrameId = requestAnimFrame(animate);
+    animationFrameId = requestAnimationFrame(animate);
 
     return () => cancelAnimationFrame(animationFrameId);
   }, []);
