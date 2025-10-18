@@ -1,167 +1,133 @@
 "use client";
 
-import React from 'react';
-import Image from 'next/image';
-import { motion } from 'framer-motion';
+import { motion } from "framer-motion";
+import { Building2, Users, Globe, Lock, CheckCircle, Shield } from "lucide-react";
 
-const enterpriseFeatures = [
+const features = [
   {
-    iconUrl: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/7efce45a-ee96-4f84-b716-068ff7ccd449-vapi-ai/assets/svgs/image-1.svg?",
-    bgColor: "bg-[#E5D5FA]",
-    title: "HIPAA Compliant",
-    description: "End-to-end encryption ensures all patient discussions remain completely confidential.",
-    alt: "shield icon"
+    icon: Building2,
+    title: "Hospital Networks",
+    description: "Connect your entire healthcare organization with private groups and secure collaboration tools.",
+    color: "from-accent-cyan to-accent-blue"
   },
   {
-    iconUrl: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/7efce45a-ee96-4f84-b716-068ff7ccd449-vapi-ai/assets/svgs/image-2.svg?",
-    bgColor: "bg-[#FAD9D3]",
-    title: "Global Network",
-    description: "Connect with verified doctors from 180+ countries across all medical specialties.",
-    alt: "globe icon"
+    icon: Users,
+    title: "Team Collaboration",
+    description: "Enable seamless communication between departments, specialties, and care teams.",
+    color: "from-accent-green to-accent-cyan"
   },
   {
-    iconUrl: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/7efce45a-ee96-4f84-b716-068ff7ccd449-vapi-ai/assets/svgs/image-5.svg?",
-    bgColor: "bg-[#D3F3F5]",
-    title: "24/7 Access",
-    description: "Platform available around the clock for consultations and peer discussions anytime.",
-    alt: "clock icon"
+    icon: Globe,
+    title: "Multi-Site Support",
+    description: "Manage multiple facilities and locations from a single unified platform.",
+    color: "from-accent-blue to-accent-purple"
   },
   {
-    iconUrl: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/7efce45a-ee96-4f84-b716-068ff7ccd449-vapi-ai/assets/svgs/image-6.svg?",
-    bgColor: "bg-[#D7F3E2]",
-    title: "Verified Professionals",
-    description: "Every member verified through medical licensing databases and credentials check.",
-    alt: "verified icon"
-  },
-  {
-    iconUrl: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/7efce45a-ee96-4f84-b716-068ff7ccd449-vapi-ai/assets/svgs/image-7.svg?",
-    bgColor: "bg-[#FCF4CD]",
+    icon: Lock,
     title: "Enterprise Security",
-    description: "Bank-level security protocols protect all medical discussions and shared content.",
-    alt: "lock icon"
+    description: "Advanced security controls, SSO integration, and comprehensive audit logs.",
+    color: "from-accent-purple to-accent-pink"
+  },
+  {
+    icon: CheckCircle,
+    title: "Compliance Ready",
+    description: "HIPAA, SOC 2, and international healthcare compliance standards included.",
+    color: "from-accent-orange to-accent-yellow"
   }
 ];
 
-const hospitalLogos = [
-  "Mayo Clinic", 
-  "Cleveland Clinic", 
-  "Johns Hopkins", 
-  "Mass General", 
-  "Stanford Health"
-];
-
-const FeatureCard = ({ iconUrl, bgColor, title, description, alt, index }: typeof enterpriseFeatures[0] & { index: number }) => (
-  <motion.div 
-    initial={{ opacity: 0, y: 30 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true }}
-    transition={{ duration: 0.5, delay: index * 0.1 }}
-    whileHover={{ y: -6, scale: 1.02 }}
-    className="group flex flex-col items-center gap-5 text-center p-6 rounded-2xl transition-all duration-300 hover:bg-white/50"
-  >
-    <motion.div 
-      className={`mx-auto flex h-24 w-24 items-center justify-center rounded-full ${bgColor} transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg`}
-      whileHover={{ rotate: [0, -10, 10, -10, 0] }}
-      transition={{ duration: 0.5 }}
-    >
-      <Image src={iconUrl} alt={alt} width={48} height={48} className="h-12 w-12" />
-    </motion.div>
-    <div className="flex flex-col gap-2">
-      <h4 className="text-[1.5rem] font-semibold leading-[2rem] text-black transition-colors group-hover:text-[#4ADE80]">
-        {title}
-      </h4>
-      <p className="text-[1rem] leading-[1.6rem] text-[#666666]">
-        {description}
-      </p>
-    </div>
-  </motion.div>
-);
-
-const LogoScroller = () => {
-  const duplicatedLogos = [...hospitalLogos, ...hospitalLogos, ...hospitalLogos, ...hospitalLogos];
-
-  return (
-    <div className="relative mt-20 w-full max-w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
-      <div className="flex w-max animate-logo-scroll">
-        {duplicatedLogos.map((logo, index) => (
-          <motion.div 
-            key={index} 
-            className="mx-8 flex h-8 flex-shrink-0 items-center justify-center"
-            whileHover={{ scale: 1.1 }}
-          >
-            <span className="whitespace-nowrap text-2xl font-medium text-gray-400 filter grayscale transition-all hover:text-gray-800 hover:filter-none">
-              {logo}
-            </span>
-          </motion.div>
-        ))}
-      </div>
-    </div>
-  );
-};
-
 export default function EnterpriseSection() {
   return (
-    <section className="relative bg-[#FFF9F0] text-black overflow-hidden">
-      <div className="absolute inset-0 z-0 bg-[radial-gradient(rgba(0,0,0,0.04)_1px,transparent_1px)] [background-size:16px_16px]"></div>
-      
-      {/* Gradient orbs */}
-      <motion.div 
-        className="absolute left-0 top-1/4 h-[400px] w-[400px] rounded-full bg-[#4ADE80]/10 blur-[100px]"
-        animate={{
-          x: [0, 50, 0],
-          scale: [1, 1.2, 1],
-        }}
-        transition={{
-          duration: 12,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-      />
-      
-      <div className="container relative z-10 mx-auto w-full px-6 pt-24 pb-24 md:px-10 lg:px-20 lg:pt-32 lg:pb-32">
+    <section className="relative w-full overflow-hidden bg-background-tertiary py-40 text-background-primary">
+      <div className="container relative z-10 mx-auto max-w-7xl px-6">
+        {/* Headline */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mb-20 text-center"
+        >
+          <h2 className="mb-6 text-5xl md:text-6xl font-bold leading-tight flex flex-wrap items-center justify-center gap-4">
+            <span>Secure.</span>
+            <Shield className="h-12 w-12 md:h-16 md:w-16 text-accent-green inline-block" />
+            <span>Scalable.</span>
+            <Building2 className="h-12 w-12 md:h-16 md:w-16 text-accent-cyan inline-block" />
+            <span className="bg-gradient-to-r from-accent-green to-accent-cyan bg-clip-text text-transparent">Trusted.</span>
+          </h2>
+          <p className="mx-auto max-w-3xl text-xl text-background-primary/70">
+            Enterprise solutions built for healthcare organizations that need security, compliance, and scale.
+          </p>
+        </motion.div>
+
+        {/* Features Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
+          {features.map((feature, index) => (
+            <motion.div
+              key={feature.title}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1, duration: 0.5 }}
+              whileHover={{ y: -8 }}
+              className="group relative overflow-hidden rounded-3xl bg-white p-8 shadow-lg transition-all duration-300 hover:shadow-2xl"
+            >
+              {/* Icon */}
+              <motion.div
+                whileHover={{ rotate: [0, -10, 10, 0], scale: 1.1 }}
+                transition={{ duration: 0.5 }}
+                className={`mb-6 inline-flex rounded-2xl bg-gradient-to-br ${feature.color} p-4`}
+              >
+                <feature.icon className="h-8 w-8 text-white" />
+              </motion.div>
+
+              {/* Content */}
+              <h3 className="mb-3 text-xl font-bold">{feature.title}</h3>
+              <p className="text-background-primary/60 leading-relaxed">{feature.description}</p>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Trusted By Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ delay: 0.4, duration: 0.6 }}
+          className="text-center"
         >
-          <motion.p 
-            className="inline-block text-center w-full text-[0.75rem] font-medium uppercase tracking-[0.15em] text-black/50 px-4 py-1.5 rounded-full border border-black/10 bg-black/5"
-            whileHover={{ scale: 1.05 }}
-          >
-            For Institutions
-          </motion.p>
-          <h2 className="mt-6 balance-text text-center text-[2.75rem] sm:text-[3.5rem] lg:text-[4rem] leading-[1.1] tracking-tight font-bold">
-            <span className="bg-gradient-to-r from-[#4ADE80] to-[#22D3EE] bg-clip-text text-transparent">Secure</span>.
-            <Image
-              src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/7efce45a-ee96-4f84-b716-068ff7ccd449-vapi-ai/assets/svgs/image-3.svg?"
-              alt="Shield Icon"
-              width={48}
-              height={48}
-              className="mx-3 inline-block h-10 w-10 sm:h-12 sm:w-12"
-            />
-            <span className="bg-gradient-to-r from-[#22D3EE] to-[#3B82F6] bg-clip-text text-transparent">Compliant</span>.
-            <Image
-              src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/7efce45a-ee96-4f84-b716-068ff7ccd449-vapi-ai/assets/svgs/image-4.svg?"
-              alt="Sparkle Icon"
-              width={48}
-              height={48}
-              className="mx-3 inline-block h-10 w-10 sm:h-12 sm:w-12"
-            />
-            <span className="bg-gradient-to-r from-[#3B82F6] to-[#A855F7] bg-clip-text text-transparent">Trusted</span>.
-          </h2>
-        </motion.div>
-        
-        <div className="mt-20 flex flex-col items-center">
-          <div className="mt-12 grid max-w-6xl gap-x-10 gap-y-12 md:grid-cols-2 lg:grid-cols-3">
-            {enterpriseFeatures.map((feature, index) => (
-              <FeatureCard key={feature.title} {...feature} index={index} />
+          <p className="mb-8 text-sm font-semibold uppercase tracking-wider text-background-primary/50">
+            Trusted by Leading Healthcare Organizations
+          </p>
+          
+          {/* Logo placeholders */}
+          <div className="flex flex-wrap justify-center items-center gap-12 mb-12">
+            {[1, 2, 3, 4, 5].map((i) => (
+              <div
+                key={i}
+                className="h-12 w-32 rounded-lg bg-background-primary/10 flex items-center justify-center"
+              >
+                <span className="text-xs text-background-primary/40 font-semibold">LOGO {i}</span>
+              </div>
             ))}
           </div>
-        </div>
 
-        <LogoScroller />
+          {/* CTA */}
+          <motion.button
+            whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(74, 222, 128, 0.3)" }}
+            whileTap={{ scale: 0.98 }}
+            className="rounded-full bg-gradient-to-r from-accent-green to-accent-cyan px-10 py-4 text-base font-semibold uppercase tracking-wide text-white shadow-xl transition-all"
+          >
+            Contact Sales
+          </motion.button>
+        </motion.div>
       </div>
     </section>
   );
 }
+
+const Shield = ({ className }: { className?: string }) => (
+  <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+  </svg>
+);

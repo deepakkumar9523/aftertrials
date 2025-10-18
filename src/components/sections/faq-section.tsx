@@ -1,85 +1,101 @@
 "use client";
 
-import React from 'react';
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+import { motion } from "framer-motion";
+import { useState } from "react";
+import { Plus, Minus } from "lucide-react";
 
-const faqData = [
+const faqs = [
   {
-    value: "item-1",
-    question: "What is After Trials?",
-    answer: "After Trials is a secure social media platform exclusively for verified healthcare professionals. It enables doctors to connect globally, share clinical insights, discuss complex cases, and access the latest medical research—all within a HIPAA-compliant environment.",
+    question: "Who can join After Trials?",
+    answer: "After Trials is exclusively for licensed healthcare professionals including physicians, nurses, pharmacists, researchers, and medical students. All members must verify their credentials during registration to maintain our trusted community."
   },
   {
-    value: "item-2",
-    question: "How do you verify medical credentials?",
-    answer: "We verify every member through multiple medical licensing databases and credential checks. Physicians must provide their medical license number, NPI, and institutional affiliation. Our verification team confirms credentials before granting platform access.",
+    question: "How does the verification process work?",
+    answer: "After signing up, you'll submit proof of your medical credentials (license number, institution email, or medical ID). Our team reviews submissions within 24-48 hours. Once verified, you'll gain full access to the platform."
   },
   {
-    value: "item-3",
-    question: "Is patient information protected?",
-    answer: "Absolutely. After Trials is fully HIPAA compliant with end-to-end encryption. All case discussions must use de-identified information. Our platform is designed with healthcare privacy regulations at its core, ensuring patient confidentiality is never compromised.",
+    question: "Is my data secure and HIPAA compliant?",
+    answer: "Absolutely. We use enterprise-grade encryption and are fully HIPAA compliant. All discussions, patient data (if shared with identifiers removed), and personal information are protected with the highest security standards."
   },
   {
-    value: "item-4",
-    question: "Can I earn CME credits on the platform?",
-    answer: "Yes! After Trials offers accredited continuing medical education through webinars, expert-led discussions, and interactive learning modules. Track your CME credits directly within your profile and receive certificates for completed activities.",
+    question: "Can I earn CME credits on After Trials?",
+    answer: "Yes! We're ACCME accredited and offer CME/CE credits through courses, webinars, and verified educational activities. Credits are automatically tracked in your profile and certificates are available for download."
   },
   {
-    value: "item-5",
-    question: "How much does it cost to join?",
-    answer: "After Trials offers a free tier for individual physicians with access to core networking features. Premium memberships unlock advanced features like unlimited case consultations, exclusive research access, and priority support. Institutional plans are available for hospitals and medical groups.",
-  },
+    question: "Is After Trials free to use?",
+    answer: "Basic membership is completely free and includes access to forums, networking, and select educational content. Premium memberships offer additional features like unlimited CME credits, advanced analytics, and priority support."
+  }
 ];
 
-const FaqIcon = () => (
-  <div className="relative h-6 w-6 shrink-0 text-white transition-transform duration-300 ease-in-out group-data-[state=open]:rotate-45">
-    <span className="absolute top-1/2 left-0 h-[1.5px] w-full -translate-y-1/2 bg-current" />
-    <span className="absolute top-0 left-1/2 h-full w-[1.5px] -translate-x-1/2 bg-current" />
-  </div>
-);
+export default function FaqSection() {
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
 
-
-const FaqSection = () => {
   return (
-    <section className="bg-background-primary py-24 sm:py-32">
-      <div className="container">
-        <div className="mx-auto lg:grid lg:grid-cols-12 lg:gap-16">
-          <div className="lg:col-span-5">
-            <h2 className="font-display text-4xl font-bold tracking-[-0.02em] text-text-primary sm:text-5xl lg:text-[56px] lg:leading-[1.1]">
-              Your questions,<br />
-              answered.
-            </h2>
-          </div>
-          <div className="mt-12 lg:col-span-7 lg:mt-0">
-            <Accordion type="single" collapsible className="w-full">
-              {faqData.map((item) => (
-                <AccordionItem 
-                  key={item.value} 
-                  value={item.value} 
-                  className="border-b border-[#2A2A2A]"
+    <section className="relative w-full overflow-hidden bg-background-secondary py-40 text-text-primary">
+      <div className="container relative z-10 mx-auto max-w-4xl px-6">
+        {/* Headline */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mb-16 text-center"
+        >
+          <h2 className="mb-6 text-5xl md:text-6xl font-bold">
+            Your Questions,
+            <br />
+            <span className="bg-gradient-to-r from-accent-green via-accent-cyan to-accent-blue bg-clip-text text-transparent">
+              Answered
+            </span>
+          </h2>
+        </motion.div>
+
+        {/* FAQ Items */}
+        <div className="space-y-4">
+          {faqs.map((faq, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1, duration: 0.5 }}
+              className="overflow-hidden rounded-2xl border border-border-subtle bg-background-primary transition-all duration-300 hover:border-accent-green/50"
+            >
+              <button
+                onClick={() => setOpenIndex(openIndex === index ? null : index)}
+                className="flex w-full items-center justify-between p-8 text-left transition-all"
+              >
+                <span className="text-xl font-bold pr-8">{faq.question}</span>
+                <motion.div
+                  animate={{ rotate: openIndex === index ? 180 : 0 }}
+                  transition={{ duration: 0.3 }}
+                  className="flex-shrink-0"
                 >
-                  <AccordionTrigger className="group flex w-full items-center justify-between py-6 text-left text-base font-semibold text-white hover:text-white/80 hover:no-underline md:text-lg">
-                    <span className="pr-4">{item.question}</span>
-                    <FaqIcon />
-                  </AccordionTrigger>
-                  <AccordionContent>
-                    <p className="max-w-[800px] pt-4 text-base text-text-secondary">
-                      {item.answer}
-                    </p>
-                  </AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
-          </div>
+                  {openIndex === index ? (
+                    <Minus className="h-6 w-6 text-accent-green" />
+                  ) : (
+                    <Plus className="h-6 w-6 text-text-tertiary" />
+                  )}
+                </motion.div>
+              </button>
+              
+              <motion.div
+                initial={false}
+                animate={{
+                  height: openIndex === index ? "auto" : 0,
+                  opacity: openIndex === index ? 1 : 0
+                }}
+                transition={{ duration: 0.3 }}
+                className="overflow-hidden"
+              >
+                <div className="px-8 pb-8 text-text-secondary leading-relaxed">
+                  {faq.answer}
+                </div>
+              </motion.div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
   );
-};
-
-export default FaqSection;
+}

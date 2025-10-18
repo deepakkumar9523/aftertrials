@@ -1,97 +1,124 @@
 "use client";
 
-import React from 'react';
-import { motion } from 'framer-motion';
+import { motion } from "framer-motion";
+import { Briefcase, MapPin, Clock, ArrowRight } from "lucide-react";
 
-const CareersSection = () => {
-  const teamImageUrl = 'https://vapi.ai/_next/image?url=%2Fcareers%2FteamImage.png&w=3840&q=75';
+const openings = [
+  {
+    title: "Senior Full-Stack Engineer",
+    location: "Remote / San Francisco",
+    type: "Full-time",
+    department: "Engineering"
+  },
+  {
+    title: "Healthcare Community Manager",
+    location: "Remote",
+    type: "Full-time",
+    department: "Community"
+  },
+  {
+    title: "Medical Content Specialist",
+    location: "Remote / New York",
+    type: "Full-time",
+    department: "Content"
+  }
+];
 
+export default function CareersSection() {
   return (
-    <section className="relative overflow-hidden bg-[#FFF9F0] py-24 sm:py-32 lg:py-40 text-[#111113]">
-      <div
-        className="absolute inset-0 z-0"
-        style={{
-          backgroundImage: 'radial-gradient(rgba(10, 10, 11, 0.05) 1px, transparent 1px)',
-          backgroundSize: '12px 12px',
-        }}
-      />
-
-      <div className="relative z-10 mx-auto max-w-7xl px-6 text-center md:px-10 lg:px-20">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
+    <section className="relative w-full overflow-hidden bg-background-tertiary py-40 text-background-primary">
+      <div className="container relative z-10 mx-auto max-w-7xl px-6">
+        {/* Headline */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mx-auto flex max-w-5xl flex-col items-center gap-6"
+          className="mb-20 text-center"
         >
-          <motion.p 
-            className="inline-block font-mono text-xs font-medium uppercase tracking-[0.15em] text-[#FF6B35] px-4 py-1.5 rounded-full border border-[#FF6B35]/20 bg-[#FF6B35]/5"
-            whileHover={{ scale: 1.05 }}
-          >
-            Careers at After Trials
-          </motion.p>
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+          <motion.div
+            initial={{ scale: 0.9, opacity: 0 }}
+            whileInView={{ scale: 1, opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="font-display text-[clamp(3rem,5vw,4.5rem)] font-bold leading-[1.1] tracking-tight text-[#0A0A0B]"
+            transition={{ delay: 0.2, duration: 0.5 }}
+            className="mb-6 inline-flex items-center gap-2 rounded-full bg-accent-green/20 px-6 py-3 text-sm font-medium text-accent-green"
           >
-            Innovate healthcare.{" "}
-            <span className="bg-gradient-to-r from-[#4ADE80] to-[#22D3EE] bg-clip-text text-transparent">
-              Build community
-            </span>.{" "}
+            <Briefcase className="h-4 w-4" />
+            <span>CAREERS AT AFTER TRIALS</span>
+          </motion.div>
+
+          <h2 className="mb-6 text-5xl md:text-6xl font-bold leading-tight">
+            Help Us Transform
             <br />
-            Make impact.
-          </motion.h2>
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="max-w-2xl text-lg md:text-xl leading-relaxed text-neutral-600"
-          >
-            Join our mission to connect healthcare professionals worldwide and transform how doctors collaborate and share knowledge.
-          </motion.p>
-          <motion.a
-            href="#"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            whileHover={{ scale: 1.05, boxShadow: "0 10px 40px rgba(0,0,0,0.1)" }}
+            <span className="bg-gradient-to-r from-accent-green to-accent-cyan bg-clip-text text-transparent">
+              Healthcare Collaboration
+            </span>
+          </h2>
+          <p className="mx-auto max-w-3xl text-xl text-background-primary/70">
+            Join our mission-driven team building the future of professional networking for healthcare. We're looking for passionate individuals who want to make a real impact.
+          </p>
+        </motion.div>
+
+        {/* Open Positions */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+          {openings.map((job, index) => (
+            <motion.div
+              key={job.title}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1, duration: 0.5 }}
+              whileHover={{ y: -8, scale: 1.02 }}
+              className="group relative overflow-hidden rounded-3xl bg-white p-8 shadow-lg transition-all duration-300 hover:shadow-2xl cursor-pointer"
+            >
+              <div className="mb-4">
+                <span className="inline-block rounded-full bg-gradient-to-r from-accent-green to-accent-cyan px-4 py-1 text-xs font-semibold text-white">
+                  {job.department}
+                </span>
+              </div>
+              
+              <h3 className="mb-4 text-xl font-bold">{job.title}</h3>
+              
+              <div className="space-y-2 mb-6 text-sm text-background-primary/60">
+                <div className="flex items-center gap-2">
+                  <MapPin className="h-4 w-4" />
+                  <span>{job.location}</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Clock className="h-4 w-4" />
+                  <span>{job.type}</span>
+                </div>
+              </div>
+
+              <motion.div
+                initial={{ x: 0 }}
+                whileHover={{ x: 8 }}
+                className="flex items-center gap-2 font-semibold text-accent-green"
+              >
+                <span>Apply Now</span>
+                <ArrowRight className="h-5 w-5" />
+              </motion.div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.4, duration: 0.6 }}
+          className="text-center"
+        >
+          <motion.button
+            whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(74, 222, 128, 0.3)" }}
             whileTap={{ scale: 0.98 }}
-            className="mt-4 inline-flex items-center justify-center rounded-full border-2 border-neutral-900/20 bg-white px-10 py-4 text-base font-semibold text-black transition-all duration-300 hover:bg-neutral-50 hover:border-neutral-900/30"
+            className="rounded-full bg-gradient-to-r from-accent-green to-accent-cyan px-10 py-4 text-base font-semibold uppercase tracking-wide text-white shadow-xl transition-all"
           >
-            See open roles
-          </motion.a>
+            View All Open Roles
+          </motion.button>
         </motion.div>
       </div>
-
-      <motion.div 
-        initial={{ opacity: 0, scale: 0.95 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8, delay: 0.2 }}
-        className="relative mt-20 h-[350px] w-full lg:h-[550px]"
-      >
-        <div
-          className="h-full w-full bg-cover bg-center"
-          style={{
-            backgroundImage: `url(${teamImageUrl})`,
-            filter: 'grayscale(1) contrast(1.1)',
-          }}
-        />
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: 'radial-gradient(circle, rgba(10, 10, 11, 0.25) 1.5px, transparent 1.5px)',
-            backgroundSize: '5px 5px',
-          }}
-        />
-      </motion.div>
     </section>
   );
-};
-
-export default CareersSection;
+}
