@@ -33,7 +33,7 @@ const DotsCircleIcon = ({ className }: {className?: string;}) =>
 
 const HeroSection = () => {
   return (
-    <section className="relative flex w-full flex-col items-center gap-10 overflow-x-hidden bg-background-primary pt-14 text-text-primary md:gap-10 md:pt-24 xl:gap-16 xl:pt-[6.5rem]">
+    <section className="relative flex w-full flex-col items-center gap-10 overflow-hidden bg-background-primary pt-14 text-text-primary md:gap-10 md:pt-24 xl:gap-16 xl:pt-[6.5rem]">
             <div className="absolute inset-0 z-[-1]">
                 <motion.div 
                     className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(78,205,196,0.15),transparent_40%)]"
