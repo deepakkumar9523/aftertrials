@@ -1,105 +1,135 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
-import { UserPlus, CheckCircle, Sparkles } from "lucide-react";
 
-const steps = [
+const cardData = [
   {
-    number: "01",
-    icon: UserPlus,
-    title: "Create Your Profile",
-    description: "Sign up with your medical credentials. Verification takes just 24 hours to ensure a trusted community.",
-    color: "from-accent-green to-accent-cyan"
+    number: "001",
+    imageSrc: "https://vapi.ai/how-it-works/steps/0/image.png",
+    imageAlt: "Create your profile",
+    title: "Create your profile",
+    description: "Verify your medical credentials and join a trusted network of healthcare professionals.",
   },
   {
-    number: "02",
-    icon: CheckCircle,
-    title: "Connect & Engage",
-    description: "Find colleagues in your specialty, join discussions, and start building your professional network.",
-    color: "from-accent-cyan to-accent-blue"
+    number: "002",
+    imageSrc: "https://vapi.ai/how-it-works/steps/1/image.png",
+    imageAlt: "Connect & Share",
+    title: "Connect & Share",
+    description: "Join specialty groups, share insights, and collaborate on complex cases with peers worldwide.",
   },
   {
-    number: "03",
-    icon: Sparkles,
-    title: "Grow Your Career",
-    description: "Share insights, collaborate on cases, earn CME credits, and discover new opportunities.",
-    color: "from-accent-purple to-accent-pink"
-  }
+    number: "003",
+    imageSrc: "https://vapi.ai/how-it-works/steps/2/image.png",
+    imageAlt: "Advance Care",
+    title: "Advance Care",
+    description: "Access latest research, attend webinars, and bring cutting-edge knowledge to your practice.",
+  },
 ];
 
-export default function HowItWorksSection() {
+const HowItWorksSection = () => {
   return (
-    <section className="relative w-full overflow-hidden bg-background-primary py-40 text-text-primary">
-      <div className="container relative z-10 mx-auto max-w-7xl px-6">
-        {/* Headline */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
+    <section className="relative bg-gradient-to-b from-background-secondary to-background-primary py-24 sm:py-32 lg:py-40 overflow-hidden">
+      {/* Animated background elements */}
+      <motion.div 
+        className="absolute left-0 top-1/4 h-[400px] w-[400px] rounded-full bg-accent-cyan/10 blur-[100px]"
+        animate={{
+          x: [0, 50, 0],
+          y: [0, -30, 0],
+        }}
+        transition={{
+          duration: 10,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+      />
+      <motion.div 
+        className="absolute right-0 bottom-1/4 h-[400px] w-[400px] rounded-full bg-accent-purple/10 blur-[100px]"
+        animate={{
+          x: [0, -50, 0],
+          y: [0, 30, 0],
+        }}
+        transition={{
+          duration: 12,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+      />
+
+      <div className="container mx-auto px-6 md:px-10 lg:px-20 relative z-10">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-20 text-center"
+          className="mx-auto max-w-4xl text-center"
         >
-          <h2 className="mb-6 text-5xl md:text-6xl font-bold leading-tight">
-            Get Started in
+          <motion.p 
+            className="inline-block font-mono text-xs font-medium uppercase tracking-[0.15em] text-accent-cyan px-4 py-1.5 rounded-full border border-accent-cyan/20 bg-accent-cyan/5"
+            whileHover={{ scale: 1.05 }}
+          >
+            How It Works
+          </motion.p>
+          <h2 className="mt-6 text-4xl leading-[1.1] tracking-[-0.02em] text-text-primary sm:text-5xl lg:text-[64px]">
+            Join in <span className="bg-gradient-to-r from-accent-cyan to-accent-blue bg-clip-text text-transparent">minutes</span>.
             <br />
-            <span className="bg-gradient-to-r from-accent-green via-accent-cyan to-accent-blue bg-clip-text text-transparent">
-              Three Simple Steps
-            </span>
+            Connect <span className="bg-gradient-to-r from-accent-green to-accent-cyan bg-clip-text text-transparent">instantly</span>.
           </h2>
-          <p className="mx-auto max-w-3xl text-xl text-text-secondary">
-            Join the largest verified network of healthcare professionals in minutes.
-          </p>
         </motion.div>
-
-        {/* Steps */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {steps.map((step, index) => (
+        
+        <div className="mt-20 grid grid-cols-1 gap-8 md:grid-cols-3">
+          {cardData.map((card, index) => (
             <motion.div
-              key={step.number}
-              initial={{ opacity: 0, y: 30 }}
+              key={card.number}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.2, duration: 0.6 }}
-              whileHover={{ y: -12, scale: 1.02 }}
-              className="group relative overflow-hidden rounded-3xl bg-gradient-to-br from-background-secondary to-background-primary border border-border-subtle p-10 transition-all duration-500 hover:border-accent-green/50 hover:shadow-2xl hover:shadow-accent-green/20"
+              transition={{ duration: 0.6, delay: index * 0.15 }}
+              whileHover={{ y: -8, scale: 1.02 }}
+              className="group relative flex flex-col rounded-3xl border border-border-subtle bg-gradient-to-b from-background-secondary to-background-primary p-8 transition-all duration-300 hover:border-accent-green/30 hover:shadow-[0_20px_60px_rgba(0,0,0,0.5)]"
             >
-              {/* Number Badge */}
-              <motion.div
-                initial={{ scale: 0 }}
-                whileInView={{ scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.2 + 0.3, type: "spring", stiffness: 200 }}
-                className="absolute top-8 right-8 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-accent-green/20 to-accent-cyan/20 border border-accent-green/30"
-              >
-                <span className="text-2xl font-bold bg-gradient-to-br from-accent-green to-accent-cyan bg-clip-text text-transparent">
-                  {step.number}
-                </span>
-              </motion.div>
-
-              {/* Icon */}
-              <motion.div
-                whileHover={{ rotate: [0, -10, 10, -10, 0], scale: 1.1 }}
-                transition={{ duration: 0.5 }}
-                className={`mb-8 inline-flex rounded-2xl bg-gradient-to-br ${step.color} p-5`}
-              >
-                <step.icon className="h-12 w-12 text-white" />
-              </motion.div>
-
-              {/* Content */}
-              <h3 className="mb-4 text-2xl font-bold">{step.title}</h3>
-              <p className="text-text-secondary leading-relaxed">{step.description}</p>
-
-              {/* Animated gradient orb on hover */}
-              <motion.div
-                initial={{ scale: 0, opacity: 0 }}
-                whileHover={{ scale: 2, opacity: 0.1 }}
-                transition={{ duration: 0.6 }}
-                className={`absolute -bottom-20 -right-20 h-64 w-64 rounded-full bg-gradient-to-br ${step.color} blur-3xl`}
-              />
+              {/* Hover glow effect */}
+              <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-accent-green/0 via-accent-cyan/0 to-accent-blue/0 opacity-0 transition-opacity duration-300 group-hover:from-accent-green/5 group-hover:via-accent-cyan/5 group-hover:to-accent-blue/5 group-hover:opacity-100" />
+              
+              <div className="relative z-10">
+                <motion.div 
+                  className="flex h-12 w-12 items-center justify-center rounded-full border-2 border-accent-green/30 bg-accent-green/5 font-mono text-sm text-accent-green transition-all duration-300 group-hover:border-accent-green group-hover:bg-accent-green group-hover:text-black group-hover:shadow-lg group-hover:shadow-accent-green/30"
+                  whileHover={{ rotate: 360 }}
+                  transition={{ duration: 0.6 }}
+                >
+                  {card.number}
+                </motion.div>
+                
+                <div className="relative my-12 flex h-[140px] items-center justify-center md:my-14">
+                  <motion.div
+                    whileHover={{ scale: 1.1, rotate: [0, -5, 5, -5, 0] }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    <Image
+                      src={card.imageSrc}
+                      alt={card.imageAlt}
+                      width={160}
+                      height={140}
+                      className="h-full w-auto object-contain drop-shadow-2xl"
+                    />
+                  </motion.div>
+                </div>
+                
+                <div className="flex flex-grow flex-col">
+                  <h3 className="text-2xl font-semibold text-text-primary transition-colors group-hover:text-accent-green">
+                    {card.title}
+                  </h3>
+                  <p className="mt-4 text-base leading-relaxed text-text-secondary">
+                    {card.description}
+                  </p>
+                </div>
+              </div>
             </motion.div>
           ))}
         </div>
       </div>
     </section>
   );
-}
+};
+
+export default HowItWorksSection;

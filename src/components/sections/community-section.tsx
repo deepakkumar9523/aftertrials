@@ -1,142 +1,208 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { BookOpen, MessageCircle, Linkedin, ArrowRight } from "lucide-react";
+import Link from 'next/link';
+import React from 'react';
+import { motion } from 'framer-motion';
 
-const platforms = [
-  {
-    icon: MessageCircle,
-    title: "Active Forums",
-    stat: "2M+",
-    description: "Clinical discussions daily",
-    color: "from-accent-green to-accent-cyan",
-    link: "#"
-  },
-  {
-    icon: BookOpen,
-    title: "Knowledge Base",
-    stat: "10K+",
-    description: "Research articles & resources",
-    color: "from-accent-cyan to-accent-blue",
-    link: "#"
-  },
-  {
-    icon: Linkedin,
-    title: "Global Network",
-    stat: "50K+",
-    description: "Healthcare professionals",
-    color: "from-accent-purple to-accent-pink",
-    link: "#"
+const DotMatrixIcon = ({ pattern, className }: { pattern: string[]; className?: string }) => {
+  if (!pattern || pattern.length === 0 || !pattern[0]) {
+    return null;
   }
+
+  const colorMap: Record<string, string> = {
+    'W': 'bg-white',
+    'P': 'bg-fuchsia-400', 
+    'C': 'bg-accent-cyan',
+  };
+
+  return (
+    <div
+      className={`grid auto-rows-[4px] ${className}`}
+      style={{
+        gridTemplateColumns: `repeat(${pattern[0].length}, 4px)`,
+        gap: '2px',
+      }}
+    >
+      {pattern.flatMap((row, rowIndex) =>
+        row.split('').map((char, colIndex) => {
+          const colorClass = colorMap[char];
+          return (
+            <div
+              key={`${rowIndex}-${colIndex}`}
+              className={`h-1 w-1 rounded-full ${colorClass || ''}`}
+            />
+          );
+        })
+      )}
+    </div>
+  );
+};
+
+// Based on "book" in design instructions, this is a document icon
+const docsPattern = [
+  "    WWWWWWWWWWWW    ",
+  "   W            WP  ",
+  "  W              WW ",
+  " W                W ",
+  " W  WWWW          W ",
+  " W  W             W ",
+  " W  WWWW  C       W ",
+  " W  W             W ",
+  " W  WWWW          W ",
+  " W                W ",
+  " W                W ",
+  "  W              W  ",
+  "   W            W   ",
+  "    WWWWWWWWWWWW    ",
+  "                    ",
 ];
 
-export default function CommunitySection() {
+// Based on "chat" in design instructions
+const communityPattern = [
+  "      WWWWWWWW      ",
+  "    WW        WW    ",
+  "  WW            WW  ",
+  " WW              WW ",
+  " W                W ",
+  " W       C        W ",
+  " W                W ",
+  " WW     P         WW ",
+  "  WW            WW  ",
+  "    WW        WW    ",
+  "      WWWWWWWW      ",
+  "          WW        ",
+  "        WW          ",
+  "      WW            ",
+  "                    ",
+];
+
+// Based on "profile" in design instructions
+const profilePattern = [
+  "                    ",
+  "      WWWWWW        ",
+  "    WW      WW      ",
+  "   W          W     ",
+  "   W     P      W   ",
+  "    WW      WW      ",
+  "      WWWWWW        ",
+  "                    ",
+  "   WWWWWWWWWWWW     ",
+  "  W            W    ",
+  " WW     C        WW ",
+  " W                W ",
+  " W                W ",
+  "  WWWWWWWWWWWWWW    ",
+  "                    ",
+];
+
+const communityData = [
+  {
+    label: "ACTIVE PHYSICIANS",
+    value: "50K+",
+    platform: "Members",
+    href: "#",
+    icon: docsPattern,
+  },
+  {
+    label: "CLINICAL DISCUSSIONS",
+    value: "2M+",
+    platform: "Community",
+    href: "#",
+    icon: communityPattern,
+  },
+  {
+    label: "MEDICAL SPECIALTIES",
+    value: "100+",
+    platform: "Specialties",
+    href: "#",
+    icon: profilePattern,
+  },
+];
+
+const CommunitySection = () => {
   return (
-    <section className="relative w-full overflow-hidden bg-background-primary py-40 text-text-primary">
-      {/* Animated background dots */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0" style={{
-          backgroundImage: 'radial-gradient(circle, currentColor 1px, transparent 1px)',
-          backgroundSize: '40px 40px'
-        }} />
-      </div>
-
-      <div className="container relative z-10 mx-auto max-w-7xl px-6">
-        {/* Headline */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mb-20 text-center"
-        >
-          <h2 className="mb-6 text-5xl md:text-6xl font-bold leading-tight">
-            <span className="bg-gradient-to-r from-accent-green via-accent-cyan to-accent-blue bg-clip-text text-transparent">
-              50,000+ Healthcare Pros
-            </span>
-            <br />
-            Are Already Here
-          </h2>
-          <p className="mx-auto max-w-3xl text-xl text-text-secondary">
-            Join the movement transforming how healthcare professionals connect, learn, and collaborate.
-          </p>
-        </motion.div>
-
-        {/* Platform Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {platforms.map((platform, index) => (
-            <motion.a
-              key={platform.title}
-              href={platform.link}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.15, duration: 0.6 }}
-              whileHover={{ y: -12, scale: 1.03 }}
-              className="group relative overflow-hidden rounded-3xl bg-gradient-to-br from-background-secondary to-background-primary border-2 border-border-subtle p-10 transition-all duration-500 hover:border-accent-green/50 hover:shadow-2xl hover:shadow-accent-green/20 cursor-pointer"
-            >
-              {/* Icon */}
-              <motion.div
-                whileHover={{ rotate: 360, scale: 1.1 }}
-                transition={{ duration: 0.6 }}
-                className={`mb-8 inline-flex rounded-full bg-gradient-to-br ${platform.color} p-6`}
-              >
-                <platform.icon className="h-10 w-10 text-white" />
-              </motion.div>
-
-              {/* Stat */}
-              <div className={`mb-2 text-6xl font-bold bg-gradient-to-br ${platform.color} bg-clip-text text-transparent`}>
-                {platform.stat}
-              </div>
-
-              {/* Title */}
-              <h3 className="mb-3 text-2xl font-bold">{platform.title}</h3>
-
-              {/* Description */}
-              <p className="mb-6 text-text-secondary">{platform.description}</p>
-
-              {/* Arrow */}
-              <motion.div
-                initial={{ x: 0 }}
-                whileHover={{ x: 8 }}
-                transition={{ duration: 0.3 }}
-                className="flex items-center gap-2 text-accent-green font-semibold"
-              >
-                <span>Explore</span>
-                <ArrowRight className="h-5 w-5" />
-              </motion.div>
-
-              {/* Glow effect */}
-              <motion.div
-                initial={{ scale: 0, opacity: 0 }}
-                whileHover={{ scale: 2, opacity: 0.1 }}
-                transition={{ duration: 0.6 }}
-                className={`absolute -bottom-20 -right-20 h-64 w-64 rounded-full bg-gradient-to-br ${platform.color} blur-3xl`}
-              />
-            </motion.a>
-          ))}
-        </div>
-
-        {/* CTA */}
-        <motion.div
+    <section className="relative bg-gradient-to-b from-background-primary to-background-secondary py-24 sm:py-32 lg:py-40 overflow-hidden">
+      {/* Animated background elements */}
+      <motion.div 
+        className="absolute left-1/4 top-1/3 h-[400px] w-[400px] rounded-full bg-accent-purple/10 blur-[100px]"
+        animate={{
+          x: [0, 40, 0],
+          y: [0, -40, 0],
+        }}
+        transition={{
+          duration: 12,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+      />
+      
+      <div className="container relative z-10">
+        <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.6, duration: 0.6 }}
-          className="mt-20 text-center"
+          transition={{ duration: 0.6 }}
+          className="mx-auto max-w-5xl text-center"
         >
-          <p className="mb-6 text-xl text-text-secondary">
-            Ready to be part of something bigger?
-          </p>
-          <motion.button
-            whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(74, 222, 128, 0.3)" }}
-            whileTap={{ scale: 0.98 }}
-            className="rounded-full bg-accent-green px-10 py-4 text-base font-semibold uppercase tracking-wide text-background-primary shadow-xl transition-all"
+          <motion.p 
+            className="inline-block font-mono text-xs font-medium uppercase tracking-[0.15em] text-accent-purple px-4 py-1.5 rounded-full border border-accent-purple/20 bg-accent-purple/5 mb-6"
+            whileHover={{ scale: 1.05 }}
           >
-            Join the Community
-          </motion.button>
+            Community
+          </motion.p>
+          <h2 className="font-display text-4xl sm:text-5xl lg:text-[64px] font-bold leading-[1.1] tracking-tight text-white">
+            <span className="bg-gradient-to-r from-accent-green via-accent-cyan to-accent-blue bg-clip-text text-transparent">50,000+ doctors</span> are already here.{" "}
+            <br className="hidden sm:inline" />
+            Join the community.
+          </h2>
         </motion.div>
+
+        <div className="mx-auto mt-20 grid max-w-none grid-cols-1 gap-6 lg:grid-cols-3">
+          {communityData.map((item, index) => (
+            <motion.div
+              key={item.platform}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              whileHover={{ y: -8, scale: 1.02 }}
+            >
+              <Link
+                href={item.href}
+                className="group relative flex h-[400px] cursor-pointer flex-col justify-between overflow-hidden rounded-3xl border bg-gradient-to-br from-[#1A1A1A] to-[#111113] p-10 border-[#2A2A2A] transition-all duration-300 ease-in-out hover:border-accent-green/50 hover:shadow-[0_20px_60px_rgba(74,222,128,0.15)]"
+              >
+                {/* Hover glow */}
+                <div className="absolute inset-0 bg-gradient-to-br from-accent-green/0 via-accent-cyan/0 to-transparent opacity-0 transition-opacity duration-300 group-hover:from-accent-green/5 group-hover:via-accent-cyan/5 group-hover:opacity-100" />
+                
+                <div className="relative z-10 flex items-center justify-between font-mono text-xs font-medium uppercase tracking-[0.15em] text-text-tertiary">
+                  <span>{item.label}</span>
+                  <motion.span 
+                    className="text-accent-green"
+                    initial={{ scale: 1 }}
+                    whileHover={{ scale: 1.1 }}
+                  >
+                    {item.value}
+                  </motion.span>
+                </div>
+
+                <div className="relative z-10 mt-auto">
+                  <motion.div
+                    whileHover={{ scale: 1.05 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <DotMatrixIcon pattern={item.icon} />
+                  </motion.div>
+                  <p className="mt-8 font-display text-xl font-medium text-white group-hover:text-accent-green transition-colors">
+                    {item.platform}
+                  </p>
+                </div>
+              </Link>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );
-}
+};
+
+export default CommunitySection;
