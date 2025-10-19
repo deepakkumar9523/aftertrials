@@ -1,3 +1,4 @@
+/* Updated: 2025-10-19T05:03:01.515Z */
 /* Updated: 2025-10-18T15:30:25.835Z */
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Monument+Grotesk:wght@400;500&display=swap');
@@ -8,33 +9,33 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  /* Shadcn/UI colors - adapted for dark theme */
-  --color-background: #0A0A0B;
-  --color-foreground: #FFFFFF;
+  /* Shadcn/UI colors - adapted for light theme */
+  --color-background: #FFFFFF;
+  --color-foreground: #0A0A0B;
 
-  --color-card: #111113;
-  --color-card-foreground: #FFFFFF;
+  --color-card: #F8F8F8;
+  --color-card-foreground: #0A0A0B;
 
-  --color-popover: #111113;
-  --color-popover-foreground: #FFFFFF;
+  --color-popover: #FFFFFF;
+  --color-popover-foreground: #0A0A0B;
 
   --color-primary: #4ADE80; /* Accent Green */
   --color-primary-foreground: #0A0A0B;
 
-  --color-secondary: #1F1F23; /* Border Subtle */
-  --color-secondary-foreground: #FFFFFF;
+  --color-secondary: #E5E5E5; /* Border Subtle */
+  --color-secondary-foreground: #0A0A0B;
 
   --color-muted: #666666; /* Text Tertiary */
-  --color-muted-foreground: #A0A0A0; /* Text Secondary */
+  --color-muted-foreground: #666666; /* Text Secondary */
 
-  --color-accent: #1F1F23; /* Border Subtle */
-  --color-accent-foreground: #FFFFFF;
+  --color-accent: #F0F0F0; /* Border Subtle */
+  --color-accent-foreground: #0A0A0B;
 
   --color-destructive: #EF4444; /* Example red, not explicitly in design system but good to have */
   --color-destructive-foreground: #FFFFFF;
 
-  --color-border: #1F1F23; /* Border Subtle */
-  --color-input: #111113; /* Background Secondary */
+  --color-border: #E5E5E5; /* Border Subtle */
+  --color-input: #F8F8F8; /* Background Secondary */
   --color-ring: #4ADE80; /* Accent Green */
 
   /* Chart colors - using design system accents */
@@ -45,13 +46,13 @@
   --color-chart-5: #FB923C; /* Accent Orange */
 
   /* Custom colors from design system */
-  --color-background-primary: #0A0A0B;
-  --color-background-secondary: #111113;
+  --color-background-primary: #FFFFFF;
+  --color-background-secondary: #F8F8F8;
   --color-background-tertiary: #F5F3ED; /* Cream/beige for enterprise section */
 
-  --color-text-primary: #FFFFFF;
-  --color-text-secondary: #A0A0A0;
-  --color-text-tertiary: #666666;
+  --color-text-primary: #0A0A0B;
+  --color-text-secondary: #666666;
+  --color-text-tertiary: #999999;
 
   --color-accent-green: #4ADE80;
   --color-accent-cyan: #22D3EE;
@@ -60,11 +61,11 @@
   --color-accent-yellow: #FDE047;
   --color-accent-orange: #FB923C;
 
-  --color-code-background: #0D1117;
-  --color-code-syntax-cyan: #00D4FF;
-  --color-code-syntax-green: #4ADE80;
+  --color-code-background: #F5F5F5;
+  --color-code-syntax-cyan: #0891B2;
+  --color-code-syntax-green: #16A34A;
 
-  --color-border-subtle: #1F1F23;
+  --color-border-subtle: #E5E5E5;
 
   /* Shadcn/UI radius */
   --radius-lg: 1rem; /* Cards */
