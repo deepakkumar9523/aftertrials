@@ -48,8 +48,8 @@ const CompanyLogosSection = () => {
   return (
     <>
       <style>{animationStyles}</style>
-      <div className="bg-[#0A0A0A] pt-4 pb-12 md:pb-24">
-        <div className="w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent_0%,#000_5%,#000_95%,transparent_100%)]">
+      <div className="bg-background-primary pt-4 pb-12 md:pb-24">
+        <div className="w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent_0%,black_5%,black_95%,transparent_100%)]">
           <div className="flex w-fit flex-nowrap animate-scroll items-center">
             {duplicatedLogos.map((logo, index) => (
               <div

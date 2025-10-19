@@ -36,10 +36,10 @@ const HeroSection = () => {
     <section className="relative flex w-full flex-col items-center gap-10 overflow-hidden bg-background-primary pt-14 text-text-primary md:gap-10 md:pt-24 xl:gap-16 xl:pt-[6.5rem]">
             <div className="absolute inset-0 z-[-1]">
                 <motion.div 
-                    className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(78,205,196,0.15),transparent_40%)]"
+                    className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(78,205,196,0.08),transparent_40%)]"
                     animate={{
                         scale: [1, 1.2, 1],
-                        opacity: [0.15, 0.25, 0.15],
+                        opacity: [0.08, 0.15, 0.08],
                     }}
                     transition={{
                         duration: 8,
@@ -48,10 +48,10 @@ const HeroSection = () => {
                     }}
                 />
                 <motion.div 
-                    className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,rgba(183,148,244,0.15),transparent_40%)]"
+                    className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,rgba(183,148,244,0.08),transparent_40%)]"
                     animate={{
                         scale: [1.2, 1, 1.2],
-                        opacity: [0.15, 0.25, 0.15],
+                        opacity: [0.08, 0.15, 0.08],
                     }}
                     transition={{
                         duration: 8,
@@ -61,10 +61,10 @@ const HeroSection = () => {
                     }}
                 />
                 <motion.div 
-                    className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(74,222,128,0.08),transparent_50%)]"
+                    className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(74,222,128,0.05),transparent_50%)]"
                     animate={{
                         scale: [1, 1.3, 1],
-                        opacity: [0.08, 0.15, 0.08],
+                        opacity: [0.05, 0.1, 0.05],
                     }}
                     transition={{
                         duration: 10,
@@ -76,13 +76,13 @@ const HeroSection = () => {
             </div>
 
             <motion.h1 
-                className="font-display text-balance px-6 text-[48px] font-black leading-tight tracking-[-0.02em] text-white md:text-[72px] !whitespace-pre-line text-center"
+                className="font-display text-balance px-6 text-[48px] font-black leading-tight tracking-[-0.02em] text-text-primary md:text-[72px] !whitespace-pre-line text-center"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, ease: "easeOut" }}
             >
                 <motion.span
-                    className="inline-block bg-gradient-to-r from-white via-accent-cyan to-white bg-clip-text text-transparent bg-[length:200%_100%]"
+                    className="inline-block bg-gradient-to-r from-accent-cyan via-accent-blue to-accent-cyan bg-clip-text text-transparent bg-[length:200%_100%]"
                     animate={{
                         backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
                     }}
@@ -108,7 +108,7 @@ const HeroSection = () => {
             >
                 <motion.a
           href="#"
-          className="group relative flex h-14 w-full flex-1 items-center justify-center gap-3 rounded-full bg-[#00E5A0] px-[32px] py-[12px] font-mono text-base font-medium uppercase tracking-wider text-black transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(0,229,160,0.5)] active:scale-95 !whitespace-pre-line overflow-hidden"
+          className="group relative flex h-14 w-full flex-1 items-center justify-center gap-3 rounded-full bg-accent-green px-[32px] py-[12px] font-mono text-base font-medium uppercase tracking-wider text-black transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(74,222,128,0.4)] active:scale-95 !whitespace-pre-line overflow-hidden"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
@@ -131,7 +131,7 @@ const HeroSection = () => {
                 </motion.a>
                 <motion.a
           href="#"
-          className="group flex h-14 w-full flex-1 items-center justify-center gap-3 rounded-full border border-border bg-transparent px-[32px] py-[12px] font-mono text-base font-medium uppercase tracking-wider text-text-secondary transition-all duration-300 hover:scale-105 hover:border-text-primary hover:text-text-primary hover:shadow-[0_0_20px_rgba(255,255,255,0.2)] active:scale-95 !whitespace-pre-line"
+          className="group flex h-14 w-full flex-1 items-center justify-center gap-3 rounded-full border-2 border-text-primary bg-transparent px-[32px] py-[12px] font-mono text-base font-medium uppercase tracking-wider text-text-primary transition-all duration-300 hover:scale-105 hover:bg-text-primary hover:text-background-primary hover:shadow-[0_0_20px_rgba(0,0,0,0.1)] active:scale-95 !whitespace-pre-line"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
@@ -173,7 +173,7 @@ const HeroSection = () => {
                         <div className="flex flex-col items-center gap-4">
                             <motion.button
                 aria-label="Connect with peers"
-                className="group relative mt-4 flex h-14 w-[13.5rem] cursor-pointer items-center justify-center gap-3 rounded-full border border-white/20 bg-black/30 font-mono text-sm font-medium uppercase tracking-wider text-white backdrop-blur-md transition-all duration-300 hover:scale-105 hover:border-white/40 hover:bg-black/40 hover:shadow-[0_0_40px_rgba(255,255,255,0.1)] active:scale-95 sm:h-[97px] sm:w-[373px] sm:gap-4 sm:text-xl"
+                className="group relative mt-4 flex h-14 w-[13.5rem] cursor-pointer items-center justify-center gap-3 rounded-full border border-text-primary/30 bg-background-primary/80 font-mono text-sm font-medium uppercase tracking-wider text-text-primary backdrop-blur-md transition-all duration-300 hover:scale-105 hover:border-text-primary/50 hover:bg-background-primary/90 hover:shadow-[0_0_40px_rgba(0,0,0,0.1)] active:scale-95 sm:h-[97px] sm:w-[373px] sm:gap-4 sm:text-xl"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ 
                     opacity: 1, 

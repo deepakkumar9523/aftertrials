@@ -78,16 +78,16 @@ const StatCard = ({ stat, index }: { stat: { value: string; label: string }; ind
             ease: "easeInOut",
           }}
         >
-          <QuoteIcon className="absolute -left-8 -top-8 h-12 w-12 text-accent-cyan/20 md:-left-12 md:-top-12 md:h-16 md:w-16" />
+          <QuoteIcon className="absolute -left-8 -top-8 h-12 w-12 text-accent-cyan/30 md:-left-12 md:-top-12 md:h-16 md:w-16" />
         </motion.div>
       )}
 
-      <dt className="font-mono text-xs uppercase tracking-[0.2em] text-white/60">
+      <dt className="font-mono text-xs uppercase tracking-[0.2em] text-text-tertiary">
         {stat.label}
       </dt>
-      <dd className="order-first font-display text-[min(20vw,8rem)] font-medium leading-none tracking-tight text-white lg:text-[8.75rem]">
+      <dd className="order-first font-display text-[min(20vw,8rem)] font-medium leading-none tracking-tight text-text-primary lg:text-[8.75rem]">
         <motion.span
-          className="inline-block bg-gradient-to-r from-white via-accent-green to-white bg-clip-text text-transparent bg-[length:200%_100%]"
+          className="inline-block bg-gradient-to-r from-accent-green via-accent-cyan to-accent-green bg-clip-text text-transparent bg-[length:200%_100%]"
           animate={{
             backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
           }}

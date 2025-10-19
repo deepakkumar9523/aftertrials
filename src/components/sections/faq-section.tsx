@@ -37,7 +37,7 @@ const faqData = [
 ];
 
 const FaqIcon = () => (
-  <div className="relative h-6 w-6 shrink-0 text-white transition-transform duration-300 ease-in-out group-data-[state=open]:rotate-45">
+  <div className="relative h-6 w-6 shrink-0 text-text-primary transition-transform duration-300 ease-in-out group-data-[state=open]:rotate-45">
     <span className="absolute top-1/2 left-0 h-[1.5px] w-full -translate-y-1/2 bg-current" />
     <span className="absolute top-0 left-1/2 h-full w-[1.5px] -translate-x-1/2 bg-current" />
   </div>
@@ -61,9 +61,9 @@ const FaqSection = () => {
                 <AccordionItem 
                   key={item.value} 
                   value={item.value} 
-                  className="border-b border-[#2A2A2A]"
+                  className="border-b border-border-subtle"
                 >
-                  <AccordionTrigger className="group flex w-full items-center justify-between py-6 text-left text-base font-semibold text-white hover:text-white/80 hover:no-underline md:text-lg">
+                  <AccordionTrigger className="group flex w-full items-center justify-between py-6 text-left text-base font-semibold text-text-primary hover:text-text-secondary hover:no-underline md:text-lg">
                     <span className="pr-4">{item.question}</span>
                     <FaqIcon />
                   </AccordionTrigger>

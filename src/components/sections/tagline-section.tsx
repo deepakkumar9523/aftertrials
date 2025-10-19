@@ -22,7 +22,7 @@ const TaglineSection = () => {
 
       <div className="container mx-auto px-6 text-center">
         <motion.h2 
-          className="font-display text-4xl md:text-[56px] lg:text-[64px] font-semibold leading-tight tracking-[-0.01em] text-white/90 [text-shadow:0_0_15px_rgba(255,255,255,0.1)]"
+          className="font-display text-4xl md:text-[56px] lg:text-[64px] font-semibold leading-tight tracking-[-0.01em] text-text-primary"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
@@ -30,7 +30,7 @@ const TaglineSection = () => {
         >
           From{' '}
           <motion.span 
-            className="bg-gradient-to-r from-[var(--accent-cyan)] via-[var(--accent-blue)] to-[var(--accent-cyan)] bg-clip-text text-transparent bg-[length:200%_100%]"
+            className="bg-gradient-to-r from-accent-cyan via-accent-blue to-accent-cyan bg-clip-text text-transparent bg-[length:200%_100%]"
             animate={{
               backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
             }}
@@ -43,42 +43,13 @@ const TaglineSection = () => {
             resident physicians
           </motion.span>{' '}
           to{' '}
-          <motion.span 
-            className="text-[var(--accent-green)]"
-            animate={{
-              textShadow: [
-                "0 0 10px rgba(74,222,128,0.3)",
-                "0 0 20px rgba(74,222,128,0.6)",
-                "0 0 10px rgba(74,222,128,0.3)",
-              ],
-            }}
-            transition={{
-              duration: 3,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-          >
+          <span className="text-accent-green">
             leading specialists
-          </motion.span>,{' '}
+          </span>,{' '}
           doctors connect and share insights on the{' '}
-          <motion.span 
-            className="text-[var(--accent-green)]"
-            animate={{
-              textShadow: [
-                "0 0 10px rgba(74,222,128,0.3)",
-                "0 0 20px rgba(74,222,128,0.6)",
-                "0 0 10px rgba(74,222,128,0.3)",
-              ],
-            }}
-            transition={{
-              duration: 3,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: 0.5,
-            }}
-          >
+          <span className="text-accent-green">
             After Trials platform
-          </motion.span>.
+          </span>.
         </motion.h2>
       </div>
     </section>

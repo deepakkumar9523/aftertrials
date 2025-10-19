@@ -10,8 +10,8 @@ const DotMatrixIcon = ({ pattern, className }: { pattern: string[]; className?: 
   }
 
   const colorMap: Record<string, string> = {
-    'W': 'bg-white',
-    'P': 'bg-fuchsia-400', 
+    'W': 'bg-text-primary',
+    'P': 'bg-accent-purple', 
     'C': 'bg-accent-cyan',
   };
 
@@ -150,7 +150,7 @@ const CommunitySection = () => {
           >
             Community
           </motion.p>
-          <h2 className="font-display text-4xl sm:text-5xl lg:text-[64px] font-bold leading-[1.1] tracking-tight text-white">
+          <h2 className="font-display text-4xl sm:text-5xl lg:text-[64px] font-bold leading-[1.1] tracking-tight text-text-primary">
             <span className="bg-gradient-to-r from-accent-green via-accent-cyan to-accent-blue bg-clip-text text-transparent">50,000+ doctors</span> are already here.{" "}
             <br className="hidden sm:inline" />
             Join the community.
@@ -169,7 +169,7 @@ const CommunitySection = () => {
             >
               <Link
                 href={item.href}
-                className="group relative flex h-[400px] cursor-pointer flex-col justify-between overflow-hidden rounded-3xl border bg-gradient-to-br from-[#1A1A1A] to-[#111113] p-10 border-[#2A2A2A] transition-all duration-300 ease-in-out hover:border-accent-green/50 hover:shadow-[0_20px_60px_rgba(74,222,128,0.15)]"
+                className="group relative flex h-[400px] cursor-pointer flex-col justify-between overflow-hidden rounded-3xl border bg-gradient-to-br from-background-secondary to-background-primary p-10 border-border-subtle transition-all duration-300 ease-in-out hover:border-accent-green/50 hover:shadow-[0_20px_60px_rgba(74,222,128,0.15)]"
               >
                 {/* Hover glow */}
                 <div className="absolute inset-0 bg-gradient-to-br from-accent-green/0 via-accent-cyan/0 to-transparent opacity-0 transition-opacity duration-300 group-hover:from-accent-green/5 group-hover:via-accent-cyan/5 group-hover:opacity-100" />
@@ -192,7 +192,7 @@ const CommunitySection = () => {
                   >
                     <DotMatrixIcon pattern={item.icon} />
                   </motion.div>
-                  <p className="mt-8 font-display text-xl font-medium text-white group-hover:text-accent-green transition-colors">
+                  <p className="mt-8 font-display text-xl font-medium text-text-primary group-hover:text-accent-green transition-colors">
                     {item.platform}
                   </p>
                 </div>
